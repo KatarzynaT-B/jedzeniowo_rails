@@ -30,6 +30,8 @@ GEM
     better_errors (1.1.0)
       coderay (>= 1.0.0)
       erubis (>= 2.6.6)
+    bootstrap-sass (2.3.2.0)
+      sass (~> 3.2)
     builder (3.1.4)
     bullet (4.8.0)
       activesupport
@@ -200,6 +202,7 @@ PLATFORMS
 
 DEPENDENCIES
   better_errors
+  bootstrap-sass (= 2.3.2.0)
   bullet
   capybara (= 2.1.0)
   coffee-rails (= 4.0.1)
