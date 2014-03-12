@@ -3,7 +3,7 @@ require 'spec_helper'
 describe "Pages" do
   subject { page }
 
-  shared_examples_for "all_static_pages" do
+  shared_examples_for "all static pages" do
     it { should have_selector('h1', text: heading) }
     it { should have_title(full_title(page_title)) }
   end
@@ -13,7 +13,7 @@ describe "Pages" do
     let(:heading) { "Witaj!" }
     let(:page_title) { '' }
 
-    it { should_behave_like "all static pages" }
+    it_should_behave_like "all static pages"
     it { should_not have_title('| Home') }
   end
 
@@ -22,7 +22,7 @@ describe "Pages" do
     let(:heading) { "O aplikacji" }
     let(:page_title) { 'O nas' }
 
-    it { should_behave_like "all static pages" }
+    it_should_behave_like "all static pages"
   end
 
   it "should have the right links on the layout" do
