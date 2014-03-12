@@ -1,0 +1,15 @@
+<% provide(:title, @user.name) %>
+<fieldset>
+  <legend>Twoje dane:</legend>
+  <table class="table table-hover">
+    <tr>
+      <th>Nazwa użytkownika:</th>
+      <td>@user.name</td>
+    </tr>
+    <tr>
+      <th>Adres email:</th>
+      <td>@user.email</td>
+    </tr>
+  </table>
+</fieldset>
+<h1><%= @user.name %></h1>

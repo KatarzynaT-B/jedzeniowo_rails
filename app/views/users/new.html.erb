@@ -1,3 +1,22 @@
 <% provide(:title, 'Załóż konto') %>
 <h1>Załóż konto!</h1>
-<p>Find me in app/views/users/new.html.erb</p>
+<div class="row">
+  <div class="span6 offset3">
+    <%= form_for(@user) do |f| %>
+      <%= render 'shared/error_messages' %>
+      <%= f.label :name, "Nazwa użytkownika:" %>
+      <%= f.text_field :name %>
+
+      <%= f.label :email, "Adres email" %>
+      <%= f.email_field :email %>
+
+      <%= f.label :password, "Hasło" %>
+      <%= f.password_field :password %>
+
+      <%= f.label :password_confirmation, "Potwierdź hasło" %>
+      <%= f.password_field :password_confirmation %>
+
+      <%= f.submit "Załóż konto", class: "btn btn-large btn-primary" %>
+    <% end %>
+  </div>
+</div>
