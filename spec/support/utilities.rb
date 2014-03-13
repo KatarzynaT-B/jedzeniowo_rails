@@ -12,8 +12,15 @@ RSpec::Matchers.define :have_sussess_message do |message|
   end
 end
 
-def valid_signin(user)
-  fill_in "Adres email", with: user.email.upcase
-  fill_in "Hasło", with: user.password
-  click_button "Zaloguj"
+def sign_in(user, options={})
+  if options[:no_capybara]
+    remember_token = User.new_remember_token
+    cookies[:remember_token] = remember_token
+    user.update_attribute(:remember_token, User.hash(remember_token))
+  else
+    visit signin_path
+    fill_in "Adres email", with: user.email
+    fill_in "Hasło", with: user.password, match: :prefer_exact
+    click_button "Zaloguj"
+  end
 end

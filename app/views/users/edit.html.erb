@@ -1,10 +1,10 @@
-<% provide(:title, 'Załóż konto') %>
-<h1>Załóż konto!</h1>
+<% provide(:title, 'Zmień dane') %>
+<h1>Zmień swoje dane</h1>
 <div class="row">
   <div class="span6 offset3">
     <%= form_for(@user) do |f| %>
       <%= render 'form', f: f %>
-      <%= f.submit "Załóż konto", class: "btn btn-large btn-primary" %>
+      <%= f.submit "Zapisz zmiany", class: "btn btn-primary" %>
     <% end %>
   </div>
 </div>

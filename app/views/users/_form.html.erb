@@ -1,0 +1,13 @@
+<%= render 'shared/error_messages' %>
+
+<%= f.label :name, "Nazwa użytkownika:" %>
+<%= f.text_field :name %>
+
+<%= f.label :email, "Adres email" %>
+<%= f.email_field :email %>
+
+<%= f.label :password, "Hasło" %>
+<%= f.password_field :password %>
+
+<%= f.label :password_confirmation, "Potwierdź hasło" %>
+<%= f.password_field :password_confirmation %>
