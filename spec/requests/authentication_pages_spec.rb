@@ -27,6 +27,7 @@ describe "Authentication" do
 
       it { should have_title(user.name) }
       it { should have_link("Twoje dane", href: user_path(user)) }
+      it { should have_link(user.name) }
       it { should have_link("Wyloguj się", href: signout_path) }
       it { should_not have_link("Zaloguj się", href: signin_path) }
 
@@ -55,6 +56,20 @@ describe "Authentication" do
           it "should rendered the desired protected page" do
             expect(page).to have_title("Zmień dane")
           end
+
+          describe "when signing in again" do
+            before do
+              click_link "Wyloguj się"
+              visit signin_path
+              fill_in "Adres email", with: user.email
+              fill_in "Hasło", with: user.password
+              click_button "Zaloguj"
+            end
+
+            it "should render the default profile page" do
+              expect(page).to have_title(user.name)
+            end
+          end
         end
       end
 
@@ -77,6 +92,21 @@ describe "Authentication" do
       end
     end
 
+    context "for signed-in users" do
+      let(:user) { FactoryGirl.create(:user) }
+      before { sign_in user, no_capybara: true }
+
+      context "submitting to the new user action" do
+        before { get new_user_path }
+        specify { expect(response).to redirect_to(root_url) }
+      end
+
+      context "submitting to the create user action" do
+        before { post users_path }
+        specify { expect(response).to redirect_to(root_url) }
+      end
+    end
+
     context "as wrong user" do
       let(:user) { FactoryGirl.create(:user) }
       let(:wrong_user) { FactoryGirl.create(:user, email: "wrong@example.com") }
@@ -91,6 +121,23 @@ describe "Authentication" do
 
       context "submitting a PATCH request to the User#update action" do
         before { patch user_path(wrong_user) }
+        specify { expect(response).to redirect_to(root_url) }
+      end
+    end
+
+    context "as non-admin user" do
+      let(:user) { FactoryGirl.create(:user) }
+      let(:non_admin) { FactoryGirl.create(:user, email: "example@user.com") }
+
+      before { sign_in non_admin, no_capybara: true }
+
+      describe "submitting a GET request to the User#index action" do
+        before { visit users_path }
+        it { should have_title(full_title('')) }
+      end
+
+      describe "submitting a DELETE request to the User#destroy action" do
+        before { delete user_path(user) }
         specify { expect(response).to redirect_to(root_url) }
       end
     end

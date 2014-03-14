@@ -24,3 +24,11 @@ def sign_in(user, options={})
     click_button "Zaloguj"
   end
 end
+
+def create_many_users
+  names_list = %w(Alice Bob Ben Cindy Dana)
+  names_list.each do |name_given|
+    FactoryGirl.create(:user, name: name_given,
+                       email: "#{name_given.downcase}@example.com")
+  end
+end

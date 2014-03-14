@@ -1,7 +1,9 @@
 class UsersController < ApplicationController
   before_action :set_user, except: [:new, :create, :index]
-  before_action :signed_in_user, only: [:edit, :update, :index]
+  before_action :signed_in_user, only: [:edit, :update, :index, :destroy]
   before_action :correct_user, only: [:edit, :update]
+  before_action :admin_only, only: [:index, :destroy]
+  before_action :not_allowed_for_user, only: [:new, :create]
 
   def new
     @user = User.new
@@ -34,7 +36,13 @@ class UsersController < ApplicationController
   end
 
   def index
-    @users = User.all
+    @users = User.paginate(page: params[:page], per_page: 5)
+  end
+
+  def destroy
+    @user.destroy
+    flash[:success] = "Użytkownik usunięty"
+    redirect_to users_url
   end
 
   private
@@ -56,5 +64,16 @@ class UsersController < ApplicationController
 
     def correct_user
       redirect_to(root_url) unless current_user?(@user)
+    end
+
+    def not_allowed_for_user
+      if signed_in?
+        redirect_to(root_url)
+        flash[:notice] = "Już jesteś użytkownikiem tej aplikacji"
+      end
+    end
+
+    def admin_only
+      redirect_to(root_url) unless current_user.admin?
     end
 end
