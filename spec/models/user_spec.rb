@@ -1,7 +1,10 @@
 require 'spec_helper'
 
 describe User do
-  before { @user = User.new(name: "Example User", email: "user@example.com", password: "foobar", password_confirmation: "foobar") }
+  before { @user = User.new(name: "Example User",
+                            email: "user@example.com",
+                            password: "foobar",
+                            password_confirmation: "foobar") }
   subject { @user }
 
   it { should be_valid }
@@ -13,6 +16,7 @@ describe User do
   it { should respond_to(:remember_token) }
   it { should respond_to(:authenticate) }
   it { should respond_to(:admin) }
+  it { should respond_to(:products) }
 
   context "with admin attribute set to 'true'" do
     before do
@@ -111,5 +115,37 @@ describe User do
   describe "remember token" do
     before { @user.save }
     its(:remember_token) { should_not be_blank }
+  end
+
+  describe "products associations" do
+    before do
+      @user.save
+      @z_product = @user.products.create(product_name: "z_product",
+                                        product_calories: 100,
+                                        product_protein: 1.9,
+                                        product_fat: 3.7,
+                                        product_carbs: 2.5)
+      @a_product = @user.products.create(product_name: "a_product",
+                                        product_calories: 100,
+                                        product_protein: 1.9,
+                                        product_fat: 3.7,
+                                        product_carbs: 2.5)
+    end
+    #let!(:z_product) { FactoryGirl.create(:product, product_name: z_product, user: @user) }
+    #let!(:a_product) { FactoryGirl.create(:product, product_name: a_product, user: @user) }
+
+    it "should have the right products in the right order" do
+      expect(@user.products.to_a).to eq [@a_product, @z_product]
+    end
+
+    it "should destroy associated products" do
+      create_many_products(@user)
+      products = @user.products.to_a
+      @user.destroy
+      expect(products).not_to be_empty
+      products.each do |product|
+        expect(Product.where(id: product.id)).to be_empty
+      end
+    end
   end
 end

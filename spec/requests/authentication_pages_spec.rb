@@ -8,6 +8,7 @@ describe "Authentication" do
     before { visit signin_path }
     it { should have_content("Zaloguj się") }
     it { should have_title("Logowanie") }
+    it { should_not have_link("Produkty") }
 
     context "with invalid data" do
       before { click_button "Zaloguj" }
@@ -30,6 +31,7 @@ describe "Authentication" do
       it { should have_link(user.name) }
       it { should have_link("Wyloguj się", href: signout_path) }
       it { should_not have_link("Zaloguj się", href: signin_path) }
+      it { should have_link("Produkty") }
 
       context "followed by signout" do
         before { click_link "Wyloguj się" }
@@ -90,10 +92,19 @@ describe "Authentication" do
           it { should have_title("Logowanie") }
         end
       end
+
+      describe "in the Products controller" do
+
+        context "visiting the index page" do
+          before { visit products_path }
+          it { should have_title("Logowanie") }
+        end
+      end
     end
 
     context "for signed-in users" do
       let(:user) { FactoryGirl.create(:user) }
+      let(:products) { create_many_products(user) }
       before { sign_in user, no_capybara: true }
 
       context "submitting to the new user action" do
@@ -105,11 +116,13 @@ describe "Authentication" do
         before { post users_path }
         specify { expect(response).to redirect_to(root_url) }
       end
+
     end
 
     context "as wrong user" do
       let(:user) { FactoryGirl.create(:user) }
       let(:wrong_user) { FactoryGirl.create(:user, email: "wrong@example.com") }
+      let(:products) { create_many_products(wrong_user) }
 
       before { sign_in user, no_capybara: true }
 

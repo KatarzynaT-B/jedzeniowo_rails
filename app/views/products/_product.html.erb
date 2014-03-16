@@ -1,0 +1,9 @@
+<tr>
+  <td><%= link_to 'zmień', edit_product_path(product) %></td>
+  <td><%= link_to 'usuń', product, method: :delete, data: { confirm: "Na pewno chcesz usunąć produkt?" } %></td>
+  <td><%= product.product_name %></td>
+  <td><%= product.product_calories %></td>
+  <td><%= product.product_protein %></td>
+  <td><%= product.product_fat %></td>
+  <td><%= product.product_carbs %></td>
+</tr>

@@ -32,3 +32,14 @@ def create_many_users
                        email: "#{name_given.downcase}@example.com")
   end
 end
+
+def create_many_products(user)
+  products_list=%w(produkt_1 produkt_2 produkt_3 produkt_4 produkt_5)
+  products_list.each do |product|
+    user.products.create(product_name: product,
+                                       product_calories: 100,
+                                       product_protein: 1.9,
+                                       product_fat: 3.7,
+                                       product_carbs: 2.5)
+  end
+end

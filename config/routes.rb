@@ -3,6 +3,7 @@ Jedzeniowo::Application.routes.draw do
   get "pages/about"
 
   resources :users
+  resources :products, except: :show
   resources :sessions, only: [:new, :create, :destroy]
 
   match "/about", to: 'pages#about', via: 'get'
