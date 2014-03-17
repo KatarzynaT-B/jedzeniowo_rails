@@ -15,4 +15,20 @@ class Product < ActiveRecord::Base
 
   validates :product_carbs,   presence:     { message: "Podaj ilość węglowodanów" },
                               numericality: { message: "Ilość węglowodanów podana niepoprawnie" }
+
+  def protein_kcal
+    (4 * self.product_protein.to_f).round
+  end
+
+  def fat_kcal
+    (9 * self.product_fat.to_f).round
+  end
+
+  def carbs_kcal
+    (4 * self.product_carbs.to_f).round
+  end
+
+  def count_calories
+    (self.product_calories = self.protein_kcal + self.fat_kcal + self.carbs_kcal).to_i
+  end
 end

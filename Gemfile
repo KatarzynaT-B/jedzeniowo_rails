@@ -29,6 +29,7 @@ group :development, :test do
   gem 'rb-notifu', '0.0.4'
   gem 'simplecov', require: false
   gem 'wdm', '0.1.0' if RbConfig::CONFIG['target_os'] =~ /mswin|mingw|cygwin/i
+  gem 'launchy'
 end
 
 group :production do

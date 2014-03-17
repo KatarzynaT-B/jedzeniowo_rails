@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe Product do
-  let(:user) { FactoryGirl.create(:user) }
+  let(:user) { create(:user) }
   before do
     @product = user.products.build(product_name: "produkt",
                                    product_calories: 100,
@@ -49,7 +49,7 @@ describe Product do
     end
 
   context "when product_name is not unique" do
-      let!(:product) { FactoryGirl.create(:product, product_name: "produkt", user: user) }
+      let!(:product) { create(:product, product_name: "produkt", user: user) }
       it { should_not be_valid }
     end
 

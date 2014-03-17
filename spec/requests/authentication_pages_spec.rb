@@ -23,7 +23,7 @@ describe "Authentication" do
     end
 
     context "with valid data" do
-      let(:user) { FactoryGirl.create(:user) }
+      let(:user) { create(:user) }
       before { sign_in user }
 
       it { should have_title(user.name) }
@@ -44,7 +44,7 @@ describe "Authentication" do
   describe "authorization" do
 
     context "for non-signed-in users" do
-      let(:user) { FactoryGirl.create(:user) }
+      let(:user) { create(:user) }
 
       context "when trying to visit protected page" do
         before do
@@ -103,7 +103,7 @@ describe "Authentication" do
     end
 
     context "for signed-in users" do
-      let(:user) { FactoryGirl.create(:user) }
+      let(:user) { create(:user) }
       let(:products) { create_many_products(user) }
       before { sign_in user, no_capybara: true }
 
@@ -120,8 +120,8 @@ describe "Authentication" do
     end
 
     context "as wrong user" do
-      let(:user) { FactoryGirl.create(:user) }
-      let(:wrong_user) { FactoryGirl.create(:user, email: "wrong@example.com") }
+      let(:user) { create(:user) }
+      let(:wrong_user) { create(:user, email: "wrong@example.com") }
       let(:products) { create_many_products(wrong_user) }
 
       before { sign_in user, no_capybara: true }
@@ -139,8 +139,8 @@ describe "Authentication" do
     end
 
     context "as non-admin user" do
-      let(:user) { FactoryGirl.create(:user) }
-      let(:non_admin) { FactoryGirl.create(:user, email: "example@user.com") }
+      let(:user) { create(:user) }
+      let(:non_admin) { create(:user, email: "example@user.com") }
 
       before { sign_in non_admin, no_capybara: true }
 

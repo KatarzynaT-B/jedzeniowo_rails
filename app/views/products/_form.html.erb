@@ -1,0 +1,15 @@
+<%= render 'shared/error_messages', object: @product %>
+
+<%= f.label :product_name, "Nazwa produktu:" %>
+<%= f.text_field :product_name %>
+
+<h3>Zawartość w 100 g:</h3>
+
+<%= f.label :product_protein, "białko" %>
+<%= f.text_field :product_protein %>
+
+<%= f.label :product_fat, "tłuszcze" %>
+<%= f.text_field :product_fat %>
+
+<%= f.label :product_carbs, "węglowodany" %>
+<%= f.text_field :product_carbs %>

@@ -3,7 +3,7 @@
   <td><%= link_to 'usuń', product, method: :delete, data: { confirm: "Na pewno chcesz usunąć produkt?" } %></td>
   <td><%= product.product_name %></td>
   <td><%= product.product_calories %></td>
-  <td><%= product.product_protein %></td>
-  <td><%= product.product_fat %></td>
-  <td><%= product.product_carbs %></td>
+  <td><%= "#{product.protein_kcal}" %></td>
+  <td><%= "#{product.fat_kcal}" %></td>
+  <td><%= "#{product.carbs_kcal}" %></td>
 </tr>

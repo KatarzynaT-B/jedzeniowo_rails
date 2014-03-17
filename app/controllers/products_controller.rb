@@ -1,4 +1,5 @@
 class ProductsController < ApplicationController
+  include ProductsHelper
   before_action :signed_in_user
 
   def index
@@ -9,6 +10,7 @@ class ProductsController < ApplicationController
   end
 
   def new
+    @product = Product.new
   end
 
   def create

@@ -4,7 +4,7 @@ describe "UserPages" do
   subject { page }
 
   context "as an admin user" do
-    let(:admin) { FactoryGirl.create(:admin) }
+    let(:admin) { create(:admin) }
 
     before(:each) do
       sign_in admin
@@ -34,9 +34,9 @@ describe "UserPages" do
     describe "delete links" do
 
       before do
-        FactoryGirl.create(:user, email: "aser1@example.com")
-        FactoryGirl.create(:user, email: "aser2@example.com")
-        FactoryGirl.create(:user, email: "aser3@example.com")
+        create(:user, email: "aser1@example.com")
+        create(:user, email: "aser2@example.com")
+        create(:user, email: "aser3@example.com")
         visit users_path
       end
 
@@ -94,7 +94,7 @@ describe "UserPages" do
   end
 
   describe "show user data" do
-    let(:user) { FactoryGirl.create(:user) }
+    let(:user) { create(:user) }
     before { visit user_path(user) }
 
     it { should have_content("Twoje dane") }
@@ -103,7 +103,7 @@ describe "UserPages" do
   end
 
   describe "edit" do
-    let(:user) { FactoryGirl.create(:user) }
+    let(:user) { create(:user) }
     before do
       sign_in user
       visit edit_user_path(user)

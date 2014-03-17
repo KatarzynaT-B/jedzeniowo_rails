@@ -120,22 +120,12 @@ describe User do
   describe "products associations" do
     before do
       @user.save
-      @z_product = @user.products.create(product_name: "z_product",
-                                        product_calories: 100,
-                                        product_protein: 1.9,
-                                        product_fat: 3.7,
-                                        product_carbs: 2.5)
-      @a_product = @user.products.create(product_name: "a_product",
-                                        product_calories: 100,
-                                        product_protein: 1.9,
-                                        product_fat: 3.7,
-                                        product_carbs: 2.5)
     end
-    #let!(:z_product) { FactoryGirl.create(:product, product_name: z_product, user: @user) }
-    #let!(:a_product) { FactoryGirl.create(:product, product_name: a_product, user: @user) }
+    let!(:z_product) { create(:product, product_name: "z_product", user: @user) }
+    let!(:a_product) { create(:product, product_name: "a_product", user: @user) }
 
     it "should have the right products in the right order" do
-      expect(@user.products.to_a).to eq [@a_product, @z_product]
+      expect(@user.products.to_a).to eq [a_product, z_product]
     end
 
     it "should destroy associated products" do

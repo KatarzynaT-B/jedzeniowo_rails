@@ -28,18 +28,14 @@ end
 def create_many_users
   names_list = %w(Alice Bob Ben Cindy Dana)
   names_list.each do |name_given|
-    FactoryGirl.create(:user, name: name_given,
-                       email: "#{name_given.downcase}@example.com")
+    create(:user, name: name_given,
+                  email: "#{name_given.downcase}@example.com")
   end
 end
 
-def create_many_products(user)
-  products_list=%w(produkt_1 produkt_2 produkt_3 produkt_4 produkt_5)
+def create_many_products(logged_user)
+  products_list=%w(produkt_1 produkt_2 produkt_3 produkt_4 produkt_5 produkt_6)
   products_list.each do |product|
-    user.products.create!(product_name: product,
-                                       product_calories: 100,
-                                       product_protein: 1.9,
-                                       product_fat: 3.7,
-                                       product_carbs: 2.5)
+    create(:product, product_name: product, user: logged_user)
   end
 end
