@@ -30,12 +30,13 @@ describe Product do
   its(:fat_kcal) { should eq (9 * @product.product_fat.to_f).round }
   its(:carbs_kcal) { should eq (4 * @product.product_carbs.to_f).round }
 
-  context "when created, product calories should be updated" do
-    before { @product.save }
-    specify { expect(@product.reload.product_calories).to eq (@product.protein_kcal + @product.fat_kcal + @product.carbs_kcal).to_i }
-    #specify { expect(@product.reload.product_calories).to eq @product.count_calories }
-    #expect(@product.product_calories).to equal(@product.count_calories)
-    #expect(@product.count_calories).to equal((@product.protein_kcal + @product.fat_kcal + @product.carbs_kcal).to_i)
+  context "when count_calories called, product's calories should be updated" do
+    before do
+      @product.save
+      @product.count_calories
+    end
+
+    its(:product_calories) { should eq ((@product.protein_kcal + @product.fat_kcal + @product.carbs_kcal).to_i) }
   end
 
   context "when user is not present" do
