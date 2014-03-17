@@ -5,15 +5,23 @@ class ProductsController < ApplicationController
   def index
     @products = @current_user.products.paginate(page: params[:page], per_page: 5)
     if @products.empty?
-      render 'new'
+      redirect_to new_product_path
     end
   end
 
   def new
-    @product = Product.new
+    @product = @current_user.products.build
   end
 
   def create
+    @product = @current_user.products.build(product_params)
+    if @product.save
+      @product.count_calories
+      redirect_to products_path
+      flash[:success] = "Produkt został dodany"
+    else
+      render action: 'new'
+    end
   end
 
   def edit

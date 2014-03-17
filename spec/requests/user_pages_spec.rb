@@ -84,7 +84,7 @@ describe "UserPages" do
         let(:user) { User.find_by(email: 'user@example.com') }
 
         it { should have_title(user.name) }
-        it { should have_sussess_message('Witamy') }
+        it { should have_success_message('Witamy') }
         it { should have_link("Wyloguj się", href: signout_path) }
       end
     end
@@ -133,7 +133,7 @@ describe "UserPages" do
       end
 
       it { should have_title(new_name) }
-      it { should have_sussess_message("zapisane") }
+      it { should have_success_message("zapisane") }
       it { should have_link("Wyloguj się", signout_path) }
       specify { expect(user.reload.name).to eq new_name }
       specify { expect(user.reload.email).to eq new_email }

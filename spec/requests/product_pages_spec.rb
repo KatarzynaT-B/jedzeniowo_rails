@@ -50,4 +50,48 @@ describe "ProductPages" do
       end
     end
   end
+
+  context "adding new product" do
+    before { visit new_product_path }
+    let(:submit) { "Zapisz produkt" }
+
+    context "with invalid product information" do
+      it "should not create a product" do
+        expect { click_button submit }.not_to change(Product, :count)
+      end
+
+      context "after submission" do
+        before { click_button submit }
+        it { should have_title "Nowy produkt" }
+        it { should have_content "error" }
+      end
+    end
+
+    context "with valid product information" do
+      before do
+        fill_in "Nazwa produktu", with: "sample product"
+        fill_in "białko", with: 14.3
+        fill_in "tłuszcze", with: 14.3
+        fill_in "węglowodany", with: 14.3
+      end
+
+      it "should create a product" do
+        expect { click_button submit }.to change(Product, :count)
+      end
+
+      it "should assign product to the proper user" do
+        expect { click_button submit }.to change(logged_user.products, :count).by(1)
+      end
+
+      context "after saving the product" do
+        before { click_button submit }
+        let(:product) { Product.find_by(product_name: "sample product") }
+
+        it { should have_title("Produkty") }
+        it { should have_success_message("Produkt został dodany") }
+        it { should have_content(product.product_name) }
+        it { should have_content(product.product_calories) }
+      end
+    end
+  end
 end
