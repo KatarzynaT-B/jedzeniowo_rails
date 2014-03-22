@@ -31,10 +31,7 @@ describe Product do
   its(:carbs_kcal) { should eq (4 * @product.product_carbs.to_f).round }
 
   context "when count_calories called, product's calories should be updated" do
-    before do
-      @product.save
-      @product.count_calories
-    end
+    before { @product.save }
 
     its(:product_calories) { should eq ((@product.protein_kcal + @product.fat_kcal + @product.carbs_kcal).to_i) }
   end

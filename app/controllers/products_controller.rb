@@ -17,7 +17,6 @@ class ProductsController < ApplicationController
   def create
     @product = @current_user.products.build(product_params)
     if @product.save
-      @product.count_calories
       redirect_to products_path
       flash[:success] = "Produkt został dodany"
     else
@@ -30,7 +29,6 @@ class ProductsController < ApplicationController
 
   def update
     if @product.update(product_params)
-      @product.count_calories
       redirect_to products_path
       flash[:success] = "Produkt został zmieniony"
     else

@@ -111,10 +111,7 @@ describe "ProductPages" do
 
   context "editing existing product" do
     let(:product) { create(:product, user: logged_user) }
-    before do
-      product.count_calories
-      visit edit_product_path(product)
-    end
+    before { visit edit_product_path(product) }
 
     describe "page" do
       it { should have_title("Edycja produktu") }
@@ -125,9 +122,8 @@ describe "ProductPages" do
     context "resigning and getting back to the products list" do
       let(:old_name) { product.product_name }
       let(:old_calories) { product.product_calories }
-      before do
-        click_link "Wróć do listy produktów"
-      end
+      before { click_link "Wróć do listy produktów" }
+
       specify { expect(product.reload.product_name).to eq old_name }
       specify { expect(product.reload.product_calories).to eq old_calories }
     end

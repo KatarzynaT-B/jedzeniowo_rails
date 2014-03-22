@@ -1,4 +1,6 @@
 class Product < ActiveRecord::Base
+  before_save :count_calories
+
   belongs_to :user
   default_scope -> { order('product_name ASC') }
 
@@ -25,6 +27,6 @@ class Product < ActiveRecord::Base
   end
 
   def count_calories
-    self.update(product_calories: (self.protein_kcal + self.fat_kcal + self.carbs_kcal).to_i)
+    self.product_calories = (self.protein_kcal + self.fat_kcal + self.carbs_kcal).to_i
   end
 end
