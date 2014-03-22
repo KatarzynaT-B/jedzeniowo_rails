@@ -2,6 +2,7 @@ class Product < ActiveRecord::Base
   before_save :count_calories
 
   belongs_to :user
+  has_many :ingredients, dependent: :destroy
   default_scope -> { order('product_name ASC') }
 
   validates :user,            presence: true

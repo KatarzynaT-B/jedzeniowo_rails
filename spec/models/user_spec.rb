@@ -18,6 +18,11 @@ describe User do
   it { should respond_to(:admin) }
   it { should respond_to(:products) }
 
+  it { should validate_presence_of(:name) }
+  it { should validate_presence_of(:email) }
+  it { should ensure_length_of(:name).is_at_most(50) }
+  it { should ensure_length_of(:password).is_at_least(6) }
+
   context "with admin attribute set to 'true'" do
     before do
       @user.save!
@@ -27,20 +32,20 @@ describe User do
     it { should be_admin }
   end
 
-  context "name is not present" do
-    before { @user.name = "" }
-    it { should_not be_valid }
-  end
+  #context "name is not present" do
+  #  before { @user.name = "" }
+  #  it { should_not be_valid }
+  #end
 
-  context "email is not present" do
-    before { @user.email = "" }
-    it { should_not be_valid }
-  end
+  #context "email is not present" do
+  #  before { @user.email = "" }
+  #  it { should_not be_valid }
+  #end
 
-  context "name is too long" do
-    before { @user.name = "a" * 51 }
-    it {should_not be_valid}
-  end
+  #context "name is too long" do
+  #  before { @user.name = "a" * 51 }
+  #  it {should_not be_valid}
+  #end
 
   context "email format is invalid" do
     it "is invalid" do
@@ -77,10 +82,10 @@ describe User do
     it { should_not be_valid }
   end
 
-  context "password too short" do
-    before { @user.password = @user.password_confirmation = "a" * 5 }
-    it { should be_invalid }
-  end
+  #context "password too short" do
+  #  before { @user.password = @user.password_confirmation = "a" * 5 }
+  #  it { should be_invalid }
+  #end
 
   context "password doesn't match confirmation" do
     before { @user.password = "barfoo" }

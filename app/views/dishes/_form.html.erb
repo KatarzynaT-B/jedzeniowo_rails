@@ -1,0 +1,9 @@
+<%= render 'shared/error_messages', object: @dish %>
+
+<%= f.label :dish_name, "Nazwa dania:" %>
+<%= f.text_field :dish_name %>
+
+<h3>Wybierz składniki</h3>
+
+<%= f.label :dish_steps, "Wykonanie" %>
+<%= f.text_area :dish_steps %>
