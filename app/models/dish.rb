@@ -1,5 +1,4 @@
 class Dish < ActiveRecord::Base
-  #before_save :count_dish_values
 
   belongs_to :user
   has_many :ingredients, dependent: :destroy
@@ -10,4 +9,5 @@ class Dish < ActiveRecord::Base
   validates :user,      presence:   true
   validates :dish_name, presence:   { message: "Podaj nazwę dania" },
                         uniqueness: { message: "Danie o takiej nazwie już istnieje" }
+
 end

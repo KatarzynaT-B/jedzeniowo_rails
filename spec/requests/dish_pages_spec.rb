@@ -40,7 +40,6 @@ describe "DishPages" do
     context "with dishes present in database" do
 
       context "has proper title and heading" do
-        #let(:products) { create_many_products(user) }
         let(:dish) { create(:dish, user: user) }
         let(:ingredient) { create(:ingredient, dish: dish, product: Product.first) }
 
@@ -54,7 +53,7 @@ describe "DishPages" do
       describe "pagination" do
 
         before do
-          create_many_dishes(user)
+          create_many_dishes_with_ingredients(user)
           visit dishes_path
         end
 
