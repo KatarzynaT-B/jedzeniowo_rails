@@ -16,7 +16,6 @@ describe Ingredient do
 
   it { should be_valid }
 
-  it { should validate_presence_of(:dish) }
   it { should validate_presence_of(:product) }
   it { should validate_presence_of(:quantity_per_dish).with_message("Podaj ilość składnika potrzebną do przygotowania dania") }
   it { should validate_numericality_of(:quantity_per_dish).with_message("Ilość składnika podana niepoprawnie") }

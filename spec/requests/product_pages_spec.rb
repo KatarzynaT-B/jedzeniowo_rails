@@ -89,7 +89,7 @@ describe "ProductPages" do
       end
 
       it "should create a product" do
-        expect { click_button submit }.to change(Product, :count)
+        expect { click_button submit }.to change(Product, :count).by(1)
       end
 
       it "should assign product to the proper user" do
@@ -119,7 +119,7 @@ describe "ProductPages" do
       it { should have_link("Wróć do listy produktów", href: products_path) }
     end
 
-    context "resigning and getting back to the products list" do
+    context "resignation and getting back to the products list" do
       let(:old_name) { product.product_name }
       let(:old_calories) { product.product_calories }
       before { click_link "Wróć do listy produktów" }

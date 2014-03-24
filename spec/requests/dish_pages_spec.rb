@@ -13,8 +13,8 @@ describe "DishPages" do
   end
 
   context "deleting dish" do
+    let(:dish) { create(:dish, user: user) }
     before do
-      create(:dish, user: user)
       create(:ingredient, dish: dish, product: Product.first)
       visit dishes_path
     end
@@ -40,40 +40,41 @@ describe "DishPages" do
     context "with dishes present in database" do
 
       context "has proper title and heading" do
-        let(:products) { create_many_products(user) }
+        #let(:products) { create_many_products(user) }
         let(:dish) { create(:dish, user: user) }
         let(:ingredient) { create(:ingredient, dish: dish, product: Product.first) }
 
         before { visit dishes_path }
 
         it { should have_title("Dania") }
-        it { should have_content("Twoje przepisy") }
+        it { should have_content("Twoje dania") }
         it { should have_link("zmień", href: edit_dish_path(dish)) }
       end
 
-      #describe "pagination" do
-      #
-      #  before do
-      #    create_many_dishes(user)
-      #    visit products_path
-      #  end
-      #
-      #  it { should have_selector('div.pagination') }
-      #
-      #  it "should list each product" do
-      #    logged_user.products.limit(5).each do |product|
-      #      expect(page).to have_content(product.product_name)
-      #    end
-      #  end
-      #end
+      describe "pagination" do
+
+        before do
+          create_many_dishes(user)
+          visit dishes_path
+        end
+
+        it { should have_selector('div.pagination') }
+
+        it "should list each product" do
+          user.dishes.limit(5).each do |dish|
+            expect(page).to have_content(dish.dish_name)
+          end
+        end
+      end
     end
   end
 
   context "adding new dish" do
-    before { visit new_dish_path }
     let(:submit) { "Zapisz danie" }
 
     context "with invalid data" do
+      before { visit new_dish_path }
+
       it "should not create product" do
         expect { click_button submit }.not_to change(Dish, :count)
       end
@@ -85,8 +86,54 @@ describe "DishPages" do
       end
     end
 
-    #context "with valida data" do
-    #  pending
-    #end
+    context "with valida data" do
+
+      before do
+        visit new_dish_path
+        fill_in "Nazwa dania:", with: "very sample dish"
+        within '#dish_ingredients_attributes_0_product_id' do
+          find("option[value='1']").click
+        end
+        fill_in "Ilość:", with: 4, match: :first
+      end
+
+      context "without using links to add ingredients" do
+
+        it "should create a dish" do
+          expect { click_button submit }.to change(Dish, :count).by(1)
+        end
+
+
+        it "should assign dish to the proper user" do
+          expect { click_button submit }.to change(user.dishes, :count).by(1)
+        end
+
+        context "after saving the dish" do
+          before { click_button submit }
+          let(:dish) { Dish.find_by(dish_name: "sample dish") }
+
+          it { should have_title("Dania") }
+          it { should have_success_message("Danie zostało dodane") }
+          it { should have_content(dish.dish_name) }
+          it { should have_content(dish.dish_calories) }
+          specify { expect(dish.dish_calories).to be > 0 }
+        end
+      end
+
+      context "with using link to add ingredients" do
+
+        before do
+          click_link "Dodaj składnik"
+          within '#dish_ingredients_attributes_1_product_id' do
+            find("option[value='2']").click
+          end
+          fill_in "Ilość:", with: 4
+        end
+
+        it "should create a dish while using links to adding ingredients" do
+          expect {click_button submit }.to change(Dish, :count).by(1)
+        end
+      end
+    end
   end
 end
