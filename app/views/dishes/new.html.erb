@@ -2,9 +2,10 @@
 <h3 class="text-left">Dodaj przepis na danie</h3>
 <div class="row">
   <div class="span6 offset1">
-    <%= form_for(@dish) do |f| %>
+    <%= nested_form_for(@dish) do |f| %>
         <%= render 'form', f: f %>
         <%= f.submit "Zapisz danie", class: "btn btn-large btn-primary" %>
     <% end %>
   </div>
 </div>
+

@@ -14,6 +14,7 @@ gem 'bootstrap-sass', '2.3.2.0'
 gem 'will_paginate', '3.0.4'
 gem 'bootstrap-will_paginate', '0.0.9'
 gem 'bcrypt-ruby', '3.1.2'
+gem 'nested_form'
 
 group :doc do
   gem 'sdoc', '0.3.20', require: false

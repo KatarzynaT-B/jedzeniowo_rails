@@ -1,0 +1,8 @@
+<%= f.select :product_id, @products.each.collect { |product| [product.product_name, product.id] } %>
+
+<%= f.label :quantity_per_dish, "Ilość:" %>
+<%= f.number_field :quantity_per_dish %>
+
+<%= f.hidden_field :_destroy %>
+<%= f.link_to_remove "Usuń składnik" %>
+

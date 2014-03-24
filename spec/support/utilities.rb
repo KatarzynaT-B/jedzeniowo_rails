@@ -39,3 +39,4 @@ def create_many_products(logged_user)
     create(:product, product_name: product, user: logged_user)
   end
 end
+

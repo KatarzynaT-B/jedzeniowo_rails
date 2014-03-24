@@ -17,12 +17,8 @@
   </div>
 </div>
 <% if signed_in? %>
-  <div class="navbar navbar-fixed-top secondnavbar">
-    <div class="navbar-inner">
-      <ul class="nav">
-        <li class="offset2"><%= link_to "Produkty", products_path %></li>
-        <li class="offset2"><%= link_to "Dania", dishes_path %></li>
-      </ul>
-    </div>
-  </div>
+  <ul class="nav nav-tabs secondnavbar">
+    <li class="offset2"><%= link_to "Produkty", products_path %></li>
+    <li class="offset2"><%= link_to "Dania", dishes_path %></li>
+  </ul>
 <% end %>

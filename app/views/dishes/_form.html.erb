@@ -5,5 +5,11 @@
 
 <h3>Wybierz składniki</h3>
 
+<%= f.fields_for :ingredients do |ingredient_builder| %>
+  <%= render "ingredients_form", f: ingredient_builder %>
+<% end %>
+
+<%= f.link_to_add "Dodaj składnik", :ingredients %>
+
 <%= f.label :dish_steps, "Wykonanie" %>
 <%= f.text_area :dish_steps %>

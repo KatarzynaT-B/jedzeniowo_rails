@@ -136,6 +136,27 @@ describe "Authentication" do
         before { patch user_path(wrong_user) }
         specify { expect(response).to redirect_to(root_url) }
       end
+
+      context "cannot see other users' products" do
+
+        context "on the product index page" do
+          before do
+            create_many_products(wrong_user)
+            get products_path
+          end
+          specify { expect(response.body).not_to match(full_title("Produkty")) }
+        end
+
+        context "while adding new dish" do
+          before do
+            create_many_products(user)
+            create(:product, product_name: "wrong_user_product", user: wrong_user)
+            get new_dish_path
+          end
+          specify { expect(response.body).not_to include("wrong_user_product") }
+        end
+
+      end
     end
 
     context "as non-admin user" do

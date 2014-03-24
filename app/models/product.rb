@@ -7,7 +7,7 @@ class Product < ActiveRecord::Base
 
   validates :user,            presence: true
   validates :product_name,    presence:     { message: "Podaj nazwę produktu" },
-                              uniqueness:   { message: "Produkt o takiej nazwie już istnieje" }
+                              uniqueness:   { scope: :user_id, message: "Produkt o takiej nazwie już istnieje" }
   validates :product_protein, presence:     { message: "Podaj ilość białka" },
                               numericality: { message: "Ilość białka podana niepoprawnie" }
   validates :product_fat,     presence:     { message: "Podaj ilość tłuszczu" },

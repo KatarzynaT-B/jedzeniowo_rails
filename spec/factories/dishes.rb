@@ -2,5 +2,7 @@
 
 FactoryGirl.define do
   factory :dish do
+    dish_name "danie"
+    user
   end
 end
