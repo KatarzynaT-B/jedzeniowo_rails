@@ -41,11 +41,11 @@ def create_many_products(logged_user)
 end
 
 def create_many_dishes_with_ingredients(user)
-  products = create_many_products(user)
-  ingredients = products.each do |product|
+  create_many_products(user)
+  Product.all.each do |product|
     create(:ingredient, product: product)
   end
-  ingredients.each do |ingredient|
+  Ingredient.all.each do |ingredient|
     create(:dish, user: user, ingredient: ingredient, dish_name: "danie_ + #{ingredient}")
   end
 end

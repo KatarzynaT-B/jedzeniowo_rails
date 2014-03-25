@@ -3,28 +3,26 @@ require 'spec_helper'
 describe "DishPages" do
   subject { page }
   let(:user) { create(:user) }
-  before do
-    create_many_products(user)
-    sign_in user
-  end
+  before { sign_in user }
 
   context "for logged users" do
     it { should have_link("Dania") }
   end
 
   context "deleting dish" do
+    let!(:product) { create(:product, user: user) }
     let(:dish) { create(:dish, user: user) }
     before do
       create(:ingredient, dish: dish, product: Product.first)
       visit dishes_path
     end
-    it { should have_link("usuń"), href: dish_path(logged_user.dishes(dish)) }
+    it { should have_link("usuń"), href: dish_path(user.dishes(dish)) }
     it "should destroy chosen dish" do
-      expect { click_link('usuń') }.to change(Product, :count).by(-1)
+      expect { click_link('usuń') }.to change(Dish, :count).by(-1)
+    end
 
-      it "should destroy associated ingredient" do
-        expect { click_link('usuń') }.to change(Ingredient, :count).by(-1)
-      end
+    it "should destroy associated ingredient" do
+      expect { click_link('usuń') }.to change(Ingredient, :count).by(-1)
     end
   end
 
@@ -40,7 +38,8 @@ describe "DishPages" do
     context "with dishes present in database" do
 
       context "has proper title and heading" do
-        let(:dish) { create(:dish, user: user) }
+        let(:product) { create(:product, user: user) }
+        let!(:dish) { create(:dish, user: user) }
         let(:ingredient) { create(:ingredient, dish: dish, product: Product.first) }
 
         before { visit dishes_path }
@@ -59,7 +58,7 @@ describe "DishPages" do
 
         it { should have_selector('div.pagination') }
 
-        it "should list each product" do
+        it "should list each dish" do
           user.dishes.limit(5).each do |dish|
             expect(page).to have_content(dish.dish_name)
           end
@@ -88,6 +87,7 @@ describe "DishPages" do
     context "with valida data" do
 
       before do
+        create_many_products(user)
         visit new_dish_path
         fill_in "Nazwa dania:", with: "very sample dish"
         within '#dish_ingredients_attributes_0_product_id' do
@@ -102,7 +102,6 @@ describe "DishPages" do
           expect { click_button submit }.to change(Dish, :count).by(1)
         end
 
-
         it "should assign dish to the proper user" do
           expect { click_button submit }.to change(user.dishes, :count).by(1)
         end
@@ -111,7 +110,7 @@ describe "DishPages" do
           before { click_button submit }
           let(:dish) { Dish.find_by(dish_name: "sample dish") }
 
-          it { should have_title("Dania") }
+          it { should have_title("Sample Dish") }
           it { should have_success_message("Danie zostało dodane") }
           it { should have_content(dish.dish_name) }
           it { should have_content(dish.dish_calories) }

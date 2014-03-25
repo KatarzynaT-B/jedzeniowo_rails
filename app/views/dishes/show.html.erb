@@ -1,4 +1,47 @@
-<h1>Dishes#show</h1>
-<p>Find me in app/views/dishes/show.html.erb</p>
-<%= @dish.dish_name %>
-<%= @dish.ingredients.inspect %>
+<% provide(:title, @dish.dish_name.titleize) %>
+
+<h3 class="text-left"><%= @dish.dish_name.titleize %></h3>
+
+<div class="span6 offset2">
+    <table class="table table-hover">
+        <caption>Wartość posiłku:</caption>
+        <tr>
+            <th>Kalorie</th>
+            <th>Białko</th>
+            <th>Tłuszcze</th>
+            <th>Węglowodany</th>
+        </tr>
+        <tr>
+            <td><%= count_calories(@dish) %></td>
+            <td><%= count_protein(@dish) %></td>
+            <td><%= count_fat(@dish) %></td>
+            <td><%= count_carbs(@dish) %></td>
+        </tr>
+    </table>
+    <table class="table table-hover">
+        <caption>Składniki:</caption>
+        <tr>
+            <th>Składnik</th>
+            <th>Ilość</th>
+            <th>Kalorie</th>
+            <th>Białko</th>
+            <th>Tłuszcze</th>
+            <th>Węglowodany</th>
+        </tr>
+        <% @dish.ingredients.each do |ingredient| %>
+            <tr>
+                <td><%= ingredient.product.product_name %></td>
+                <td><%= ingredient.quantity_per_dish %></td>
+                <td><%= "#{ingredient.count_calories} kcal" %></td>
+                <td><%= "#{ingredient.count_protein} g" %></td>
+                <td><%= "#{ingredient.count_fat} g" %></td>
+                <td><%= "#{ingredient.count_carbs} g" %></td>
+            </tr>
+        <% end %>
+    </table>
+
+    <h4>Wykonanie:</h4>
+    <p><%= @dish.dish_steps %></p>
+
+    <%= link_to "zmień", edit_dish_path(@dish), class: "btn btn-primary" %>
+</div>

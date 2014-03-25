@@ -25,7 +25,7 @@ class DishesController < ApplicationController
     @dish = @current_user.dishes.create(dish_params)
     if @dish.save
       redirect_to @dish
-      flash[:success] = "Danie zostało zapisane"
+      flash[:success] = "Danie zostało dodane"
     else
       render action: 'new'
     end
@@ -35,6 +35,9 @@ class DishesController < ApplicationController
   end
 
   def destroy
+    @dish.destroy
+    flash[:success] = "Danie usunięte"
+    redirect_to dishes_url
   end
 
   private

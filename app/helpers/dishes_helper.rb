@@ -2,7 +2,7 @@ module DishesHelper
 
   def count_calories(dish)
     calories = 0
-    dish.ingredients.each { |i| calories += i.count_calories }
+    dish.ingredients.includes(:product).each { |i| calories += i.count_calories }
     "#{calories.round} kcal"
   end
 
@@ -23,4 +23,5 @@ module DishesHelper
     dish.ingredients.each { |i| carbs += i.count_carbs }
     "#{(4.0 * carbs).round} kcal (#{carbs.round(2)} g)"
   end
+
 end
