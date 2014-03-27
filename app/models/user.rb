@@ -11,6 +11,7 @@ class User < ActiveRecord::Base
 
   has_many :products, dependent: :destroy
   has_many :dishes, dependent: :destroy
+  has_many :meal_types, dependent: :destroy
 
   def User.new_remember_token
     SecureRandom.urlsafe_base64

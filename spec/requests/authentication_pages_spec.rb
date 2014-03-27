@@ -34,7 +34,7 @@ describe "Authentication" do
       it { should have_link("Produkty") }
       it { should have_link("Dania") }
       it { should have_link("Twoje profile") }
-      it { should have_link("Typy posiłków") }
+      it { should have_link("Typy posiłków", href: meal_types_path) }
 
       context "followed by signout" do
         before { click_link "Wyloguj się" }
@@ -115,6 +115,25 @@ describe "Authentication" do
         end
       end
 
+      describe "in the MealTypes controller" do
+        let(:meal_type) { create(:meal_type, user: user) }
+
+        context "visiting the index page" do
+          before { visit meal_types_path }
+          it { should have_title("Logowanie") }
+        end
+
+        context "submittinf to the update action" do
+          before { patch meal_type_path(meal_type) }
+          specify { expect(response).to redirect_to(signin_path) }
+        end
+
+        context "visiting the edit page" do
+          before { visit edit_meal_type_path(meal_type) }
+          it { should have_title("Logowanie") }
+        end
+      end
+
       describe "in the Dishes controller" do
         before { create_many_dishes(user) }
 
@@ -137,7 +156,6 @@ describe "Authentication" do
 
     context "for signed-in users" do
       let(:user) { create(:user) }
-      let(:products) { create_many_products(user) }
       before { sign_in user, no_capybara: true }
 
       context "submitting to the new user action" do
@@ -149,13 +167,11 @@ describe "Authentication" do
         before { post users_path }
         specify { expect(response).to redirect_to(root_url) }
       end
-
     end
 
     context "as wrong user" do
       let(:user) { create(:user) }
       let(:wrong_user) { create(:user, email: "wrong@example.com") }
-      let(:products) { create_many_products(wrong_user) }
 
       before { sign_in user, no_capybara: true }
 
@@ -171,12 +187,11 @@ describe "Authentication" do
       end
 
       context "cannot see other users' products" do
+        #let(:products) { create_many_products(wrong_user) }
+        #let(:dishes) { create_many_dishes(wrong_user) }
 
         context "on the product index page" do
-          before do
-            create_many_products(wrong_user)
-            get products_path
-          end
+          before { get products_path }
           specify { expect(response.body).not_to match(full_title("Produkty")) }
         end
 
@@ -188,7 +203,20 @@ describe "Authentication" do
           end
           specify { expect(response.body).not_to include("wrong_user_product") }
         end
+      end
 
+      context "cannot see other users' dishes" do
+        context "on the dishes index page" do
+          before { get dishes_path }
+          specify { expect(response.body).not_to match(full_title("Dania")) }
+        end
+      end
+
+      context "cannot see other users' meal types" do
+        context "on the meal_types index page" do
+          before { get meal_types_path }
+          specify { expect.(response.body).not_to match(full_title("Typy posiłków")) }
+        end
       end
     end
 

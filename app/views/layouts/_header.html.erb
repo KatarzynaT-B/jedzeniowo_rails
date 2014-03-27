@@ -7,7 +7,7 @@
           <li><%= link_to "Home", root_path %></li>
           <li><%= link_to "O nas", about_path %></li>
           <% if signed_in? %>
-            <%= render 'layouts/signed_in' %>
+            <%= render 'layouts/signed_in_main' %>
           <% else %>
             <li><%= link_to "Zaloguj się", signin_path %></li>
           <% end %>
@@ -17,8 +17,5 @@
   </div>
 </div>
 <% if signed_in? %>
-  <ul class="nav nav-tabs secondnavbar">
-    <li class="offset2"><%= link_to "Produkty", products_path %></li>
-    <li class="offset2"><%= link_to "Dania", dishes_path %></li>
-  </ul>
+  <%= render 'layouts/signed_in_menu' %>
 <% end %>

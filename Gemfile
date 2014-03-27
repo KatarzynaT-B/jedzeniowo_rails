@@ -15,6 +15,8 @@ gem 'will_paginate', '3.0.4'
 gem 'bootstrap-will_paginate', '0.0.9'
 gem 'bcrypt-ruby', '3.1.2'
 gem 'nested_form'
+gem 'sprockets', '2.11.0'
+gem 'rake', '10.2.1'
 
 group :doc do
   gem 'sdoc', '0.3.20', require: false
@@ -26,8 +28,6 @@ group :development, :test do
   gem 'guard-rspec', '2.5.0', require: false
   gem 'selenium-webdriver', '2.35.1'
   gem 'capybara', '2.1.0'
-  #gem 'capybara-webkit'
-  #gem 'database_cleaner'
   gem 'factory_girl_rails', '4.2.1'
   gem 'rb-notifu', '0.0.4'
   gem 'simplecov', require: false

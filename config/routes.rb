@@ -13,6 +13,7 @@ Jedzeniowo::Application.routes.draw do
   resources :products, except: :show
   resources :sessions, only: [:new, :create, :destroy]
   resources :dishes
+  resources :meal_types, except: :show
 
   match "/about", to: 'pages#about', via: 'get'
   match "/signup", to: 'users#new', via: 'get'
