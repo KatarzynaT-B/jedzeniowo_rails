@@ -26,6 +26,8 @@ group :development, :test do
   gem 'guard-rspec', '2.5.0', require: false
   gem 'selenium-webdriver', '2.35.1'
   gem 'capybara', '2.1.0'
+  #gem 'capybara-webkit'
+  #gem 'database_cleaner'
   gem 'factory_girl_rails', '4.2.1'
   gem 'rb-notifu', '0.0.4'
   gem 'simplecov', require: false

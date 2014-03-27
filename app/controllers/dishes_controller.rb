@@ -1,6 +1,5 @@
 class DishesController < ApplicationController
   before_action :signed_in_user
-  before_action :set_dish, only: [:show, :edit, :update, :destroy]
   before_action :set_products, except: :destroy
 
   def index
@@ -9,6 +8,7 @@ class DishesController < ApplicationController
   end
 
   def show
+    @dish = @current_user.dishes.includes(ingredients: :product).find(params[:id])
   end
 
   def new
@@ -17,6 +17,7 @@ class DishesController < ApplicationController
   end
 
   def edit
+    @dish = @current_user.dishes.find(params[:id])
   end
 
   def create
@@ -30,6 +31,7 @@ class DishesController < ApplicationController
   end
 
   def update
+    @dish = @current_user.dishes.includes(ingredients: :product).find(params[:id])
     if @dish.update(dish_params)
       redirect_to @dish
       flash[:success] = "Danie zostało zmienione"
@@ -39,6 +41,7 @@ class DishesController < ApplicationController
   end
 
   def destroy
+    @dish = @current_user.dishes.find(params[:id])
     @dish.destroy
     flash[:success] = "Danie usunięte"
     redirect_to dishes_url
@@ -49,10 +52,6 @@ class DishesController < ApplicationController
     def dish_params
       params.require(:dish).permit(:dish_name, :dish_steps, :dish_protein, :dish_fat, :dish_carbs, :dish_calories,
                                    ingredients_attributes: [:id, :quantity_per_dish, :product_id, :dish_id, :_destroy])
-    end
-
-    def set_dish
-      @dish = @current_user.dishes.find(params[:id])
     end
 
     def set_products

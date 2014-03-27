@@ -73,7 +73,7 @@ describe "DishPages" do
     context "with invalid data" do
       before { visit new_dish_path }
 
-      it "should not create product" do
+      it "should not create dish" do
         expect { click_button submit }.not_to change(Dish, :count)
       end
 
@@ -118,20 +118,56 @@ describe "DishPages" do
         end
       end
 
-      context "with using link to add ingredients" do
+      #context "with using link to add ingredients" do  #js testing, not yet
+      #
+      #  before do
+      #    click_link "Dodaj składnik"
+      #    within '#dish_ingredients_attributes_1_product_id' do
+      #      find("option[value='2']").click
+      #    end
+      #    fill_in "Ilość:", with: 4
+      #  end
+      #
+      #  it "should create a dish while using links to adding ingredients" do
+      #    expect {click_button submit }.to change(Dish, :count).by(1)
+      #  end
+      #end
+    end
+  end
 
-        before do
-          click_link "Dodaj składnik"
-          within '#dish_ingredients_attributes_1_product_id' do
-            find("option[value='2']").click
-          end
-          fill_in "Ilość:", with: 4
-        end
+  context "editing dish" do
+    let(:submit) { "Zapisz zmiany"}
+    let(:dish) { create(:dish, user: user) }
 
-        it "should create a dish while using links to adding ingredients" do
-          expect {click_button submit }.to change(Dish, :count).by(1)
-        end
+    describe "page" do
+      before { visit edit_dish_path(dish) }
+
+      it { should have_content('Zmień przepis na danie') }
+      it { should have_title("Zmień danie") }
+    end
+
+    context "with invalid data" do
+
+      before  do
+        visit edit_dish_path(dish)
+        fill_in "Nazwa dania:", with: ""
+        click_button submit
       end
+
+      it { should have_content('error') }
+    end
+
+    context "with valida data" do
+
+      before do
+        create_many_products(user)
+        visit edit_dish_path(dish)
+        fill_in "Nazwa dania:", with: "some other dish"
+        click_button submit
+      end
+
+      it { should have_title("some other dish".titleize) }
+      it { should have_success_message("zostało zmienione") }
     end
   end
 end
