@@ -12,10 +12,10 @@
             <th>Węglowodany</th>
         </tr>
         <tr>
-            <td><%= count_calories(@dish) %></td>
-            <td><%= count_protein(@dish) %></td>
-            <td><%= count_fat(@dish) %></td>
-            <td><%= count_carbs(@dish) %></td>
+            <td><%= "#{@dish.dish_calories} kcal" %></td>
+            <td><%= "#{4.0 * @dish.dish_protein} kcal (#{@dish.dish_protein})" %></td>
+            <td><%= "#{9.0 * @dish.dish_fat} kcal (#{@dish.dish_fat})" %></td>
+            <td><%= "#{4.0 * @dish.dish_carbs} kcal (#{@dish.dish_carbs})" %></td>
         </tr>
     </table>
     <table class="table table-hover">

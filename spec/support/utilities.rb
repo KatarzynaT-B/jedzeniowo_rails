@@ -40,12 +40,12 @@ def create_many_products(logged_user)
   end
 end
 
-def create_many_dishes_with_ingredients(user)
+def create_many_dishes(user)
   create_many_products(user)
-  Product.all.each do |product|
-    create(:ingredient, product: product)
-  end
-  Ingredient.all.each do |ingredient|
-    create(:dish, user: user, ingredient: ingredient, dish_name: "danie_ + #{ingredient}")
+  dishes = []
+  user.products.each do |product|
+    dish = create(:dish, user: user, dish_name: "danie_ + #{product.id}")
+    dishes << dish
+    create(:ingredient, product: product, dish: dishes.last )
   end
 end

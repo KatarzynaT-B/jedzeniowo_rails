@@ -1,2 +1,11 @@
-<h1>Dishes#edit</h1>
-<p>Find me in app/views/dishes/edit.html.erb</p>
+<% provide(:title, 'Zmień danie') %>
+<h3 class="text-left">Zmień przepis na danie</h3>
+<div class="row">
+  <div class="span6 offset1">
+    <%= nested_form_for(@dish) do |f| %>
+        <%= render 'form', f: f %>
+        <%= f.submit "Zapisz zmiany", class: "btn btn-large btn-primary" %>
+    <% end %>
+  </div>
+</div>
+

@@ -52,7 +52,7 @@ describe "DishPages" do
       describe "pagination" do
 
         before do
-          create_many_dishes_with_ingredients(user)
+          create_many_dishes(user)
           visit dishes_path
         end
 
@@ -108,11 +108,11 @@ describe "DishPages" do
 
         context "after saving the dish" do
           before { click_button submit }
-          let(:dish) { Dish.find_by(dish_name: "sample dish") }
+          let(:dish) { Dish.find_by(dish_name: "very sample dish") }
 
-          it { should have_title("Sample Dish") }
+          it { should have_title("Very Sample Dish") }
           it { should have_success_message("Danie zostało dodane") }
-          it { should have_content(dish.dish_name) }
+          it { should have_content(dish.dish_name.titleize) }
           it { should have_content(dish.dish_calories) }
           specify { expect(dish.dish_calories).to be > 0 }
         end

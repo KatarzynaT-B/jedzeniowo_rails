@@ -32,6 +32,9 @@ describe "Authentication" do
       it { should have_link("Wyloguj się", href: signout_path) }
       it { should_not have_link("Zaloguj się", href: signin_path) }
       it { should have_link("Produkty") }
+      it { should have_link("Dania") }
+      it { should have_link("Twoje profile") }
+      it { should have_link("Typy posiłków") }
 
       context "followed by signout" do
         before { click_link "Wyloguj się" }
@@ -94,9 +97,39 @@ describe "Authentication" do
       end
 
       describe "in the Products controller" do
+        let(:product) { create(:product, user: user) }
 
         context "visiting the index page" do
           before { visit products_path }
+          it { should have_title("Logowanie") }
+        end
+
+        context "submitting to the update action" do
+          before { patch product_path(product) }
+          specify { expect(response).to redirect_to(signin_path) }
+        end
+
+        context "visiting the edit page" do
+          before { visit edit_product_path(product) }
+          it { should have_title("Logowanie") }
+        end
+      end
+
+      describe "in the Dishes controller" do
+        before { create_many_dishes(user) }
+
+        context "visiting the index page" do
+          before { visit dishes_path }
+          it { should have_title("Logowanie") }
+        end
+
+        context "submitting to the update action" do
+          before { patch dish_path(user.dishes.first) }
+          specify { expect(response).to redirect_to(signin_path) }
+        end
+
+        context "visiting the edit page" do
+          before { visit edit_dish_path(user.dishes.first) }
           it { should have_title("Logowanie") }
         end
       end

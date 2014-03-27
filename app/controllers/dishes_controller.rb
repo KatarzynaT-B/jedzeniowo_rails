@@ -3,10 +3,8 @@ class DishesController < ApplicationController
   before_action :set_dish, only: [:show, :edit, :update, :destroy]
   before_action :set_products, except: :destroy
 
-  include DishesHelper
-
   def index
-    @dishes = @current_user.dishes.includes(ingredients: :product).paginate(page: params[:page], per_page: 5)
+    @dishes = @current_user.dishes.paginate(page: params[:page], per_page: 5)
     redirect_to new_dish_path if @dishes.empty?
   end
 
@@ -32,6 +30,12 @@ class DishesController < ApplicationController
   end
 
   def update
+    if @dish.update(dish_params)
+      redirect_to @dish
+      flash[:success] = "Danie zostało zmienione"
+    else
+      render action: 'edit'
+    end
   end
 
   def destroy
