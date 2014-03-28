@@ -9,11 +9,11 @@ describe "MealTypePages" do
 
   context "deleting meal type" do
     before do
-      let(:meal_type) { create(:meal_type, user: user) }
+      create(:meal_type, user: user)
       visit meal_types_path
     end
 
-    it { should have_link("usuń"), href: meal_type_path(meal_type) }
+    it { should have_link("usuń", href: meal_type_path(MealType.first)) }
     specify { expect { click_link('usuń', match: :first) }.to change(MealType, :count).by(-1) }
   end
 
@@ -22,18 +22,21 @@ describe "MealTypePages" do
       before { visit meal_types_path }
 
       it { should have_title("Nowy typ posiłku") }
-      it { should have_content("Dodaj typ posiłki") }
+      it { should have_content("Dodaj typ posiłku") }
     end
 
     context "with meal types in database" do
+
       context "has proper title and heading" do
-        let(:meal_type) { create(:meal_type, user: user) }
-        before { visit meal_types_path }
+        before do
+          create(:meal_type, user: user)
+          visit meal_types_path
+        end
 
         it { should have_title("Typy posiłków") }
         it { should have_content("Twoje typy posiłków") }
-        it { should have_link("zmień", href: edit_meal_type_path(meal_type)) }
-        it { should have_content(meal_type.name) }
+        it { should have_link("zmień", href: edit_meal_type_path(MealType.first)) }
+        it { should have_content(MealType.first.name) }
       end
     end
   end
@@ -55,7 +58,7 @@ describe "MealTypePages" do
     end
 
     context "with valid data" do
-      before { fill_in "Nazwa", with: "dinner" }
+      before { fill_in "Typ posiłku", with: "dinner" }
       it "should create a meal type" do
         expect { click_button submit }.to change(MealType, :count).by(1)
       end
@@ -72,33 +75,32 @@ describe "MealTypePages" do
 
     describe "page" do
       it { should have_title("Edycja typu posiłku") }
-      it { should have_content("Zmień dane typu posiłku") }
-      it { should have_link("Wróć do listy typów posiłków", href: meal_types_path) }
+      it { should have_content("Zmień typ posiłku") }
+      it { should have_link("Wróć do listy typów", href: meal_types_path) }
     end
 
     context "resignation and getting back to the meal types list" do
       let(:old_name) { meal_type.name }
-      before { click_link "Wróć do listy typów posiłków" }
+      before { click_link "Wróć do listy typów" }
 
-      specify { expect(meal_type.reload.meal_type_name).to eq old_name }
+      specify { expect(meal_type.reload.name).to eq old_name }
     end
 
     context "changing meal type data" do
-      let(:new_name) { "new dinner" }
       before do
-        fill_in "Nazwa", with: new_name
+        fill_in "Typ posiłku", with: "new dinner"
         click_button "Zapisz zmiany"
       end
 
       it { should have_title("Typy posiłków") }
       it { should have_success_message("zmieniony") }
 
-      specify { expect(meal_type.reload.meal_type_name).to eq new_name }
+      specify { expect(meal_type.reload.name).to eq "new dinner" }
     end
 
     context "with invalid meal type data" do
       before do
-        fill_in "Nazwa", with: ""
+        fill_in "Typ posiłku", with: ""
         click_button "Zapisz zmiany"
       end
       it { should have_title "Edycja typu posiłku" }

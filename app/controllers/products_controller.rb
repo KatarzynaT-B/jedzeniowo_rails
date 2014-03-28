@@ -1,5 +1,4 @@
 class ProductsController < ApplicationController
-  include ProductsHelper
   before_action :signed_in_user
   before_action :set_product, only: [:edit, :update, :destroy]
 

@@ -215,7 +215,7 @@ describe "Authentication" do
       context "cannot see other users' meal types" do
         context "on the meal_types index page" do
           before { get meal_types_path }
-          specify { expect.(response.body).not_to match(full_title("Typy posiłków")) }
+          specify { expect(response.body).not_to match(full_title("Typy posiłków")) }
         end
       end
     end

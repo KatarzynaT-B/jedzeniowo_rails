@@ -1,0 +1,5 @@
+<tr>
+  <td><%= link_to 'zmień', edit_meal_type_path(meal_type) %></td>
+  <td><%= link_to 'usuń', meal_type, method: :delete, data: { confirm: "Na pewno chcesz usunąć typ posiłku?" } %></td>
+  <td><%= meal_type.name %></td>
+</tr>
