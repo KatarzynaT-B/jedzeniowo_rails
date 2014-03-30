@@ -1,0 +1,7 @@
+<tr>
+  <td><%= link_to 'zmień', edit_menu_path(menu) %></td>
+  <td><%= link_to 'usuń', menu, method: :delete, data: { confirm: "Na pewno chcesz usunąć jadłospis?" } %></td>
+  <td><%= link_to menu.menu_date || 'Szczegóły', menu %></td>
+  <td><%= menu.meals_no %></td>
+  <td><%= "#{menu.menu_calories} kcal" %></td>
+</tr>

@@ -13,7 +13,7 @@ class Dish < ActiveRecord::Base
 
   def count_calories
     calories = 0
-    self.ingredients.includes(:product).each { |i| calories += i.count_calories }
+    self.ingredients.each { |i| calories += i.count_calories }
     self.dish_calories = calories.round
   end
 

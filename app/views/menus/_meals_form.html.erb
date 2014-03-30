@@ -1,0 +1,9 @@
+<%= f.label :meal_type_id, "Wybierz rodzaj posiłku:" %>
+<%= f.select :meal_type_id, @meal_types.each.collect { |meal_type| [meal_type.name, meal_type.id] } %>
+
+<%= f.label :dish_id, "Wybierz danie:" %>
+<%= f.select :dish_id, @dishes.each.collect { |dish| [dish.dish_name, dish.id] } %>
+
+<%= f.hidden_field :_destroy %>
+<%= f.link_to_remove "Usuń posiłek" %>
+

@@ -1,6 +1,8 @@
 class DishesController < ApplicationController
   before_action :signed_in_user
   before_action :set_products, except: :destroy
+  before_action :set_dish, only: [:edit, :destroy]
+  before_action :set_dish_with_ingredients, only: [:show, :update]
 
   def index
     @dishes = @current_user.dishes.paginate(page: params[:page], per_page: 5)
@@ -8,7 +10,6 @@ class DishesController < ApplicationController
   end
 
   def show
-    @dish = @current_user.dishes.includes(ingredients: :product).find(params[:id])
   end
 
   def new
@@ -17,11 +18,10 @@ class DishesController < ApplicationController
   end
 
   def edit
-    @dish = @current_user.dishes.find(params[:id])
   end
 
   def create
-    @dish = @current_user.dishes.create(dish_params)
+    @dish = @current_user.dishes.build(dish_params)
     if @dish.save
       redirect_to @dish
       flash[:success] = "Danie zostało dodane"
@@ -31,7 +31,6 @@ class DishesController < ApplicationController
   end
 
   def update
-    @dish = @current_user.dishes.includes(ingredients: :product).find(params[:id])
     if @dish.update(dish_params)
       redirect_to @dish
       flash[:success] = "Danie zostało zmienione"
@@ -41,7 +40,6 @@ class DishesController < ApplicationController
   end
 
   def destroy
-    @dish = @current_user.dishes.find(params[:id])
     @dish.destroy
     flash[:success] = "Danie usunięte"
     redirect_to dishes_url
@@ -56,6 +54,14 @@ class DishesController < ApplicationController
 
     def set_products
       @products = @current_user.products
+    end
+
+    def set_dish
+      @dish = @current_user.dishes.find(params[:id])
+    end
+
+    def set_dish_with_ingredients
+      @dish = @current_user.dishes.includes(ingredients: :product).find(params[:id])
     end
 
 

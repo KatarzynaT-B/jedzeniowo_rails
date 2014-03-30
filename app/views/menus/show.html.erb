@@ -1,0 +1,58 @@
+<% provide(:title, "Szczegóły jadłospisu") %>
+
+<div class="span6 offset2">
+    <table class="table table-hover">
+        <caption>Jadłospis - wartości odżywcze</caption>
+        <tr>
+            <th>Kalorie</th>
+            <th>Białko</th>
+            <th>Tłuszcze</th>
+            <th>Węglowodany</th>
+        </tr>
+        <tr>
+          <td><%= "#{@menu.menu_calories} kcal" %></td>
+          <td><%= "#{4.0 * @menu.menu_protein} kcal (#{@menu.menu_protein} g)" %></td>
+          <td><%= "#{9.0 * @menu.menu_fat} kcal (#{@menu.menu_fat} g)" %></td>
+          <td><%= "#{4.0 * @menu.menu_carbs} kcal (#{@menu.menu_carbs} g)" %></td>
+        </tr>
+    </table>
+    <h3>Posiłki:</h3>
+    <% @menu.meals.each do |meal| %>
+        <table class="table table-hover">
+            <caption><%= "#{meal.meal_type.name} - #{meal.dish.dish_name}" %></caption>
+            <tr>
+                <th>Składniki</th>
+                <th>Ilość</th>
+                <th>Kalorie</th>
+            </tr>
+            <% meal.dish.ingredients.each do |ingredient| %>
+            <tr>
+                <td><%= ingredient.product.product_name %></td>
+                <td><%= "#{ingredient.quantity_per_dish} g" %></td>
+                <td><%= "#{ingredient.count_calories} kcal" %></td>
+            </tr>
+            <% end %>
+        </table>
+
+        <h5>Wykonanie:</h5>
+        <p><%= meal.dish.dish_steps %></p>
+
+        <table class="table table-hover">
+            <caption>Łącznie</caption>
+            <tr>
+                <th>Kalorie</th>
+                <th>Białko</th>
+                <th>Tłuszcze</th>
+                <th>Węglowodany</th>
+            </tr>
+            <tr>
+                <td><%= "#{meal.dish.dish_calories} kcal" %></td>
+                <td><%= "#{meal.dish.dish_protein} g" %></td>
+                <td><%= "#{meal.dish.dish_fat} g" %></td>
+                <td><%= "#{meal.dish.dish_carbs} g" %></td>
+            </tr>
+        </table>
+    <% end %>
+
+    <%= link_to "zmień", edit_menu_path(@menu), class: "btn btn-primary" %>
+</div>

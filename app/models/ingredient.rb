@@ -7,7 +7,7 @@ class Ingredient < ActiveRecord::Base
                                 numericality: {message: "Ilość składnika podana niepoprawnie" }
 
   def count_calories
-    self.quantity_per_dish * self.product.product_calories / 100
+    (self.quantity_per_dish * self.product.product_calories / 100).round
   end
 
   def count_protein

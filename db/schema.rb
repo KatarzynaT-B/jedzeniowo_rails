@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140327132847) do
+ActiveRecord::Schema.define(version: 20140328115918) do
 
   create_table "dishes", force: true do |t|
     t.string   "dish_name"
@@ -46,6 +46,33 @@ ActiveRecord::Schema.define(version: 20140327132847) do
   end
 
   add_index "meal_types", ["user_id"], name: "index_meal_types_on_user_id"
+
+  create_table "meals", force: true do |t|
+    t.integer  "meal_type_id"
+    t.integer  "dish_id"
+    t.integer  "menu_id"
+    t.integer  "position"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "meals", ["dish_id"], name: "index_meals_on_dish_id"
+  add_index "meals", ["meal_type_id"], name: "index_meals_on_meal_type_id"
+  add_index "meals", ["menu_id"], name: "index_meals_on_menu_id"
+
+  create_table "menus", force: true do |t|
+    t.date     "menu_date"
+    t.integer  "meals_no"
+    t.integer  "menu_calories"
+    t.float    "menu_protein"
+    t.float    "menu_fat"
+    t.float    "menu_carbs"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "menus", ["user_id"], name: "index_menus_on_user_id"
 
   create_table "products", force: true do |t|
     t.string   "product_name"
