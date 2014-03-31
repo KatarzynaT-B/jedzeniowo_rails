@@ -1,8 +1,6 @@
 <% provide(:title, @dish.dish_name.titleize) %>
-
-<h3 class="text-left"><%= @dish.dish_name.titleize %></h3>
-
-<div class="span6 offset2">
+<div class="span12">
+  <h3><%= @dish.dish_name.titleize %></h3>
     <table class="table table-hover">
         <caption>Wartość posiłku:</caption>
         <tr>
@@ -13,9 +11,9 @@
         </tr>
         <tr>
             <td><%= "#{@dish.dish_calories} kcal" %></td>
-            <td><%= "#{4.0 * @dish.dish_protein} kcal (#{@dish.dish_protein})" %></td>
-            <td><%= "#{9.0 * @dish.dish_fat} kcal (#{@dish.dish_fat})" %></td>
-            <td><%= "#{4.0 * @dish.dish_carbs} kcal (#{@dish.dish_carbs})" %></td>
+            <td><%= "#{4.0 * @dish.dish_protein} kcal (#{@dish.dish_protein} g)" %></td>
+            <td><%= "#{9.0 * @dish.dish_fat} kcal (#{@dish.dish_fat} g)" %></td>
+            <td><%= "#{4.0 * @dish.dish_carbs} kcal (#{@dish.dish_carbs} g)" %></td>
         </tr>
     </table>
     <table class="table table-hover">
@@ -40,8 +38,11 @@
         <% end %>
     </table>
 
-    <h4>Wykonanie:</h4>
-    <p><%= @dish.dish_steps %></p>
+    <table class="table table-hover">
+      <caption>Wykonanie</caption>
+      <tr><td><%= @dish.dish_steps %></td></tr>
+    </table>
 
-    <%= link_to "zmień", edit_dish_path(@dish), class: "btn btn-primary" %>
+
+    <%= link_to "zmień", edit_dish_path(@dish), class: "btn btn-large btn-primary pull-right" %>
 </div>

@@ -1,6 +1,7 @@
 <% provide(:title, @user.name) %>
-<h3 class="text-left">Twoje dane:</h3>
-<div class="span6 offset2">
+<div class="hero-unit">
+<h3>Twoje dane:</h3>
+
   <table class="table table-hover">
     <tr>
       <th>Nazwa użytkownika:</th>
@@ -11,5 +12,6 @@
       <td><%= @user.email %></td>
     </tr>
   </table>
-  <%= link_to "Zmień dane", edit_user_path(@user), class: "btn btn-primary" %>
+  <%= link_to "Zmień dane", edit_user_path(@user), class: "btn btn-primary pull-right" %>
+
 </div>
