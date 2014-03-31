@@ -1,23 +1,22 @@
 <% provide(:title, 'Dania') %>
 <h3 class="text-left">Twoje dania</h3>
-
-<div class="span8">
-  <table class="table table-hover">
-    <thead>
-    <tr>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th>Kalorie</th>
-      <th>Białko</th>
-      <th>Tłuszcze</th>
-      <th>Węglowodany</th>
-    </tr>
-    </thead>
-    <tbody>
-    <%= render @dishes %>
-    </tbody>
-  </table>
-  <%= will_paginate %>
-  <%= link_to "Dodaj nowe danie", new_dish_path, class: "btn btn-primary" %>
+<div class="span12">
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th>Kalorie</th>
+                <th>Białko</th>
+                <th>Tłuszcze</th>
+                <th>Węglowodany</th>
+            </tr>
+        </thead>
+        <tbody>
+            <%= render @dishes %>
+        </tbody>
+    </table>
+    <%= will_paginate %>
+    <%= link_to "Dodaj nowe danie", new_dish_path, class: "btn btn-primary" %>
 </div>

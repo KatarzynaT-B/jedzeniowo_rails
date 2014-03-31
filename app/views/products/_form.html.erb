@@ -1,15 +1,31 @@
 <%= render 'shared/error_messages', object: @product %>
 
-<%= f.label :product_name, "Nazwa produktu:" %>
-<%= f.text_field :product_name %>
+<div class="form-group name">
+    <%= f.label :product_name, "Nazwa produktu:", class: "col-md-3 control-label" %>
+    <div class="col-md-3">
+        <%= f.text_field :product_name %>
+    </div>
+</div>
 
-<h3>Zawartość w 100 g:</h3>
+<h4>Zawartość w 100 g:</h4>
 
-<%= f.label :product_protein, "białko" %>
-<%= f.text_field :product_protein %>
-
-<%= f.label :product_fat, "tłuszcze" %>
-<%= f.text_field :product_fat %>
-
-<%= f.label :product_carbs, "węglowodany" %>
-<%= f.text_field :product_carbs %>
+<div class="amount_fields ">
+    <div class="form-group amount">
+        <%= f.label :product_protein, "białko", class: "col-md-6 control-label"  %>
+        <div class="col-md-3 ">
+            <%= f.text_field :product_protein %>
+        </div>
+    </div>
+    <div class="form-group amount">
+        <%= f.label :product_fat, "tłuszcze", class: "col-md-6 control-label"  %>
+        <div class="col-md-3 ">
+            <%= f.text_field :product_fat %>
+        </div>
+    </div>
+    <div class="form-group amount">
+        <%= f.label :product_carbs, "węglowodany", class: "col-md-6 control-label"  %>
+        <div class="col-md-3 ">
+            <%= f.text_field :product_carbs %>
+        </div>
+    </div>
+</div>

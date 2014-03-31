@@ -1,25 +1,23 @@
 <% provide(:title, 'Produkty') %>
 <h3 class="text-left">Twoje produkty:</h3>
-
-
-<div class="span8">
-  <table class="table table-hover">
-    <caption>Dla 100 g:</caption>
-    <thead>
-    <tr>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th>Kalorie</th>
-      <th>Białko</th>
-      <th>Tłuszcze</th>
-      <th>Węglowodany</th>
-    </tr>
-    </thead>
-    <tbody>
-      <%= render @products %>
-    </tbody>
-  </table>
-  <%= will_paginate %>
-  <%= link_to "Dodaj nowy produkt", new_product_path, class: "btn btn-primary" %>
+<div class="span12">
+    <table class="table table-hover">
+        <caption>Dla 100 g:</caption>
+        <thead>
+            <tr>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th>Kalorie</th>
+                <th>Białko</th>
+                <th>Tłuszcze</th>
+                <th>Węglowodany</th>
+            </tr>
+        </thead>
+        <tbody>
+            <%= render @products %>
+        </tbody>
+    </table>
+    <%= will_paginate %>
+    <%= link_to "Dodaj nowy produkt", new_product_path, class: "btn btn-primary" %>
 </div>
