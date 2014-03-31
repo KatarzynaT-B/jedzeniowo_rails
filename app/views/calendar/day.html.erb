@@ -1,0 +1,15 @@
+<table>
+  <tr>
+    <th><%= link_to('wcześniej', date: @date.yesterday) %></th>
+    <th><%= @date %></th>
+    <th><%= link_to('później', date: @date.tomorrow) %></th>
+  </tr>
+</table>
+
+<h1><%= @date %></h1>
+
+<% if @menu %>
+    <%= render template: 'menus/show' %>
+<% else %>
+    <%= render 'no_menu' %>
+<% end %>

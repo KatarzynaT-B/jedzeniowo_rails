@@ -21,5 +21,8 @@ Jedzeniowo::Application.routes.draw do
   match "/signin", to: 'sessions#new', via: 'get'
   match "/signout", to: 'sessions#destroy', via: 'delete'
 
+  get '/calendar/day/(:date)' => 'calendar#day'
+  get '/calendar/month/(:year_month)' => 'calendar#month'
+
   root 'pages#home'
 end
