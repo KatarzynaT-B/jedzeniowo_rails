@@ -111,6 +111,14 @@ input {
   input { width: 80%; }
 }
 
+.date {
+  label {
+    width: 8% !important;
+    text-align: left !important;
+  }
+  input { width: 15%; }
+}
+
 .offset-min { margin-left: 1px; }
 
 .amount {
@@ -133,9 +141,23 @@ input {
   select { width: 40% !important; }
   padding-bottom: 20px;
 }
+
 #dish_dish_steps {
   margin-bottom: 20px;
 }
+
+#meal_type_name {
+  width: 50%;
+}
+
+.meal-fields {
+  padding-bottom: 20px;
+}
+
+#meal-field-type { width: 20% !important; }
+#meal-field-dish { width: 40% !important; }
+//#submit-menu-button {}
+
 /* errors */
 
 #error_explanation {

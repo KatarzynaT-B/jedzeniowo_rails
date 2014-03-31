@@ -1,15 +1,15 @@
 <% provide(:title, 'Jadłospisy') %>
 <h3 class="text-left">Twoje jadłospisy</h3>
 
-<div class="span8">
+<div class="span6">
   <table class="table table-hover">
     <thead>
     <tr>
       <th></th>
       <th></th>
       <th></th>
-      <th>Liczba posiłków</th>
-      <th>Dawka kalorii</th>
+      <th>Posiłki</th>
+      <th>Kalorie</th>
     </tr>
     </thead>
     <tbody>
@@ -17,5 +17,5 @@
     </tbody>
   </table>
   <%= will_paginate %>
-  <%= link_to "Dodaj nowy jadłospis", new_menu_path, class: "btn btn-primary" %>
+  <%= link_to "Dodaj nowy jadłospis", new_menu_path, class: "btn btn-primary pull-right" %>
 </div>
