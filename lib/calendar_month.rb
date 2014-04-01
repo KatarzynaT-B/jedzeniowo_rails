@@ -1,6 +1,7 @@
 class CalendarMonth
   include DateAndTime
   include DateAndTime::Calculations
+  attr_accessor :date
 
   def initialize(date)
     @date = date
@@ -15,55 +16,73 @@ class CalendarMonth
     {1 => 'poniedziałek', 2 => 'wtorek', 3 => 'środa', 4 => 'czwartek', 5 => 'piątek', 6 => 'sobota', 7 => 'niedziela'}
   end
 
-  def weekday_number
-    @date.wday == 0 ? 7 : @date.wday
+  def weekday_number(date)
+    date.wday == 0 ? 7 : date.wday
   end
 
-  def count_days
-    Time.days_in_month(@date.month, @date.year)
+  def count_days(date)
+    Time.days_in_month(date.month, date.year)
+  end
+
+  def present_month
+    months = declare_month_names
+    months[@date.month]
   end
 
   def build_weeks_array
-    weeks = self.count_number_of_weeks
-    first_day_of_second_week = ((first_week(@date))[-1].split(" "))[0].to_i + 1
+    weeks_number = count_number_of_weeks
+    first_week_date = first_week
+    first_day_of_second_week = ((first_week_date)[-1].split(" "))[0].to_i + 1
     weeks_for_month = {}
-    weeks_for_month[0] = first_week(@date)
+    weeks_for_month[0] = first_week_date
     i = 1
     starting_step = 0
-    while i < weeks - 1
-      weeks_for_month[i] = each_middle_week(first_day_of_second_week + starting_step, @date)
+    while i < weeks_number - 1
+      weeks_for_month[i] = each_middle_week(first_day_of_second_week + starting_step)
       i += 1
       starting_step += 7
     end
-    weeks_for_month[weeks - 1] = last_week(@date)
+    weeks_for_month[weeks_number - 1] = final_week
     weeks_for_month
   end
 
+  def list_dates_to_show
+    months = declare_month_names
+    year = @date.year
+    beginning_day = first_week[0].split(" ")[0].to_i
+    ending_day = final_week[-1].split(" ")[0].to_i
+    beginning_month = months.invert[first_week[0].split(" ")[-1]].to_i
+    ending_month = months.invert[final_week[-1].split(" ")[-1]].to_i
+    beginning = Date.new(year, beginning_month, beginning_day)
+    ending = Date.new(year, ending_month, ending_day)
+    [beginning, ending]
+  end
+
   def count_number_of_weeks
-    first_of_month = weekday_number
-    days_after_first_sunday = count_days - (8 - first_of_month)
+    first_of_month = weekday_number(@date.beginning_of_month)
+    days_after_first_sunday = count_days(@date) - (8 - first_of_month)
     (days_after_first_sunday % 7 > 0) ? (2 + days_after_first_sunday / 7) : (1 + days_after_first_sunday / 7)
   end
 
-  def first_week(date)
-    list_end_days_for_month.concat(list_days_till_sunday)
+  def first_week
+    (list_end_days_for_month(@date)).concat(list_days_till_sunday(@date))
   end
 
-  def each_middle_week(start_day, date)
+  def each_middle_week(start_day)
     months = declare_month_names
     week = []
     (0..6).each do |i|
-      week << "#{start_day + i} #{months[date.month]}"
+      week << "#{start_day + i} #{months[@date.month]}"
     end
     week
   end
 
-  def last_week(date)
-    if weekday_number(date.end_of_month) == 7
-      start_day = 6.days.ago(date.end_of_month).day
-      each_middle_week(start_day, date)
+  def final_week
+    if weekday_number(@date.end_of_month) == 7
+      start_day = 6.days.ago(@date.end_of_month).day
+      each_middle_week(start_day)
     else
-      date_new = date.end_of_month.tomorrow
+      date_new = @date.end_of_month.tomorrow
       (list_end_days_for_month(date_new)).concat(list_days_till_sunday(date_new))
     end
   end

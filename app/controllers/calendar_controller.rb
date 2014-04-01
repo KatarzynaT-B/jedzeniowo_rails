@@ -11,8 +11,8 @@ class CalendarController < ApplicationController
   end
 
   def month
-    @date = (params[:month] ? Date.strptime(params[:month] + '-01', "%Y-%m-%d") : Date.strptime(Time.now.strftime("%Y-%m-%d")))
-    @weeks = CalendarMonth.new(@date)
+    @date = (params[:year_month] ? Date.strptime(params[:year_month] + '-01', "%Y-%m-%d") : Date.strptime(Time.now.strftime("%Y-%m-%d")))
+    @cal = CalendarMonth.new(@date)
   end
 
 end
