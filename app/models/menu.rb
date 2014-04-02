@@ -14,6 +14,8 @@ class Menu < ActiveRecord::Base
     self.meals_no = self.meals.count
   end
 
+  # n+1 zapytań
+  # Enumerable#inject LUB Enumerable#sum
   def count_calories
     calories = 0
     self.meals.each { |meal| calories += meal.dish.dish_calories }

@@ -11,20 +11,6 @@ describe Product do
 
   subject { @product }
 
-  it { should respond_to(:product_name) }
-  it { should respond_to(:product_calories) }
-  it { should respond_to(:product_protein) }
-  it { should respond_to(:product_fat) }
-  it { should respond_to(:product_carbs) }
-  it { should respond_to(:user_id) }
-  it { should respond_to(:user) }
-  its(:user) { should eq user }
-  it { should respond_to(:protein_kcal) }
-  it { should respond_to(:fat_kcal) }
-  it { should respond_to(:carbs_kcal) }
-  it { should respond_to(:count_calories) }
-  it { should respond_to(:ingredients) }
-
   it { should be_valid }
 
   its(:protein_kcal) { should eq (4 * @product.product_protein.to_f).round }

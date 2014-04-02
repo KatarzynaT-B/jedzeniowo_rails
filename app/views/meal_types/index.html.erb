@@ -1,5 +1,5 @@
-<% provide(:title, 'Typy posiłków') %>
-<h3 class="text-left">Twoje typy posiłków:</h3>
+<% provide(:title, (t '.subtitle')) %>
+<h3 class="text-left"><%= t '.header.main' %></h3>
 <div class="span4 offset1">
   <table class="table table-hover">
     <thead>
@@ -13,5 +13,5 @@
       <%= render @meal_types %>
     </tbody>
   </table>
-  <%= link_to "Dodaj nowy typ posiłku", new_meal_type_path, class: "btn btn-primary pull-right" %>
+  <%= link_to (t '.link.add'), new_meal_type_path, class: "btn btn-primary pull-right" %>
 </div>

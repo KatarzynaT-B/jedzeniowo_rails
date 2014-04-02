@@ -1,6 +1,6 @@
 <tr>
-  <td><%= link_to 'zmień', edit_dish_path(dish) %></td>
-  <td><%= link_to 'usuń', dish, method: :delete, data: { confirm: "Na pewno chcesz usunąć danie?" } %></td>
+  <td><%= link_to (t '.link.edit'), edit_dish_path(dish) %></td>
+  <td><%= link_to (t '.link.delete'), dish, method: :delete, data: { confirm: (t "confirmation", target: "to danie") } %></td>
   <td><%= link_to dish.dish_name, dish %></td>
   <td><%= "#{dish.dish_calories} kcal" %></td>
   <td><%= "#{dish.dish_protein} g" %></td>

@@ -1,12 +1,12 @@
-<% provide(:title, 'Nowy typ posiłku') %>
+<% provide(:title, (t '.subtitle')) %>
 <div class="hero-unit">
-    <h3 class="text-left">Dodaj typ posiłku</h3>
+    <h3 class="text-left"><%= t '.header.main' %></h3>
     <div class="row">
       <div class="span5 offset1">
         <%= form_for @meal_type, html: { class: "form-inline" } do |f| %>
             <div class="form-group">
                 <%= render 'form', f: f %>
-                <%= f.submit "Zapisz", class: "btn btn-medium btn-primary" %>
+                <%= f.submit (t '.button.submit'), class: "btn btn-medium btn-primary" %>
             </div>
         <% end %>
       </div>

@@ -1,0 +1,85 @@
+pl:
+  meal_types:
+    new:
+      subtitle: "Nowy typ posiłku"
+      header:
+        main: "Dodaj typ posiłku"
+      button:
+        submit: "Zapisz"
+    edit:
+      subtitle: "Edycja typu posiłku"
+      header:
+        main: "Zmień typ posiłku"
+      button:
+        submit: "Zapisz zmiany"
+      link:
+        index: "Wróć do listy typów"
+    index:
+      subtitle: "Typy posiłków"
+      header:
+        main: "Twoje typy posiłków"
+      link:
+        add: "Dodaj nowy typ posiłku"
+
+    meal_type:
+      link:
+        edit: "zmień"
+        delete: "usuń"
+
+  dishes:
+    new:
+      subtitle: "Nowe danie"
+      header:
+        main: "Dodaj przepis"
+      button:
+        submit: "Zapisz danie"
+    edit:
+      subtitle: "Nowe danie"
+      header:
+        main: "Dodaj przepis"
+      button:
+        submit: "Zapisz zmiany"
+    form:
+      link:
+        add: "Dodaj kolejny składnik"
+      header:
+        ingredients: "Wybierz składniki"
+        steps: "Wykonanie"
+    ingredients_form:
+      select:
+        prompt: "wybierz składnik"
+      placeholder:
+        quantity: "ilość"
+    dish:
+      link:
+        edit: "zmień"
+        delete: "usuń"
+    index:
+      subtitle: "Dania"
+      header:
+        main: "Twoje dania"
+      table:
+        calories: "Kalorie"
+        protein: "Białko"
+        fat: "Tłuszcze"
+        carbs: "Węglowodany"
+      link:
+        add: "Dodaj nowe danie"
+    show:
+      table:
+        meal:
+          title: "Wartość posiłku:"
+          calories: "Kalorie"
+          protein: "Białko"
+          fat: "Tłuszcze"
+          carbs: "Węglowodany"
+        ingredients:
+          title: "Składniki"
+          name: "Składnik"
+          amount: "Ilość"
+          calories: "Kalorie"
+          protein: "Białko"
+          fat: "Tłuszcze"
+          carbs: "Węglowodany"
+        steps:
+          title: "Wykonanie"

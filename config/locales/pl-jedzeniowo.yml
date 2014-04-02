@@ -1,0 +1,13 @@
+pl:
+  # FLASH:
+  flash:
+    dishes:
+      create:
+        success: "Danie zostało dodane"
+      update:
+        success: "Danie zostało zmienione"
+      destroy:
+        success: "Danie zostało usunięte"
+
+  # MESSAGES:
+  confirmation: "Na pewno chcesz usunąć %{target}?"

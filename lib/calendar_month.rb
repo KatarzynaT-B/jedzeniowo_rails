@@ -35,11 +35,10 @@ class CalendarMonth
     first_day_of_second_week = ((first_week_date)[-1].split(" "))[0].to_i + 1
     weeks_for_month = {}
     weeks_for_month[0] = first_week_date
-    i = 1
     starting_step = 0
-    while i < weeks_number - 1
+    #while i < weeks_number - 1
+    1.upto(weeks_number-1) do |i|
       weeks_for_month[i] = each_middle_week(first_day_of_second_week + starting_step)
-      i += 1
       starting_step += 7
     end
     weeks_for_month[weeks_number - 1] = final_week

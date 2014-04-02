@@ -1,5 +1,5 @@
-<% provide(:title, 'Dania') %>
-<h3 class="text-left">Twoje dania</h3>
+<% provide(:title, (t '.subtitle')) %>
+<h3 class="text-left"><%= t ".header.main" %></h3>
 <div class="span12">
     <table class="table table-hover">
         <thead>
@@ -7,10 +7,10 @@
                 <th></th>
                 <th></th>
                 <th></th>
-                <th>Kalorie</th>
-                <th>Białko</th>
-                <th>Tłuszcze</th>
-                <th>Węglowodany</th>
+                <th><%= t '.table.calories' %></th>
+                <th><%= t '.table.protein' %></th>
+                <th><%= t '.table.fat' %></th>
+                <th><%= t '.table.carbs' %></th>
             </tr>
         </thead>
         <tbody>
@@ -18,5 +18,5 @@
         </tbody>
     </table>
     <%= will_paginate %>
-    <%= link_to "Dodaj nowe danie", new_dish_path, class: "btn btn-primary" %>
+    <%= link_to (t '.link.add'), new_dish_path, class: "btn btn-primary" %>
 </div>

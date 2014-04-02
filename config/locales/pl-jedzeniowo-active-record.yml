@@ -1,0 +1,39 @@
+pl:
+  activerecord:
+    models:
+      dish: "Danie"
+      ingredient: "Składnik"
+      meal_type: "Typ posiłku"
+      meal: "Posiłek"
+      menu: "Jadłospis"
+      product: "Produkty"
+      user: "Użytkownik"
+    attributes:
+      dish:
+        dish_name: "Nazwa dania"
+        dish_steps: "Wykonanie"
+        dish_protein: "Białko"
+        dish_fat: "Tłuszcze"
+        dish_carbs: "Węglowodany"
+        dish_calories: "Kalorie"
+      ingredient:
+        quantity_per_dish: "Ilość"
+      meal_type:
+        name: "Typ"
+      menu:
+        menu_date: "Data"
+        meals_no: "Liczba posiłków"
+        menu_calories: "Kalorie"
+        menu_protein: "Białko"
+        menu_fat: "Tłuszcze"
+        menu_carbs: "Węglowodany"
+      product:
+        product_name: "Nazwa produktu"
+        product_calories: "Kalorie"
+        product_protein: "Białko"
+        product_fat: "Tłuszcze"
+        product_carbs: "Węglowodany"
+      user:
+        name: "Nazwa użytkownika"
+        email: "Adres e-mail"
+        password: "Hasło"
