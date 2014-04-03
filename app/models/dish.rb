@@ -8,8 +8,8 @@ class Dish < ActiveRecord::Base
   accepts_nested_attributes_for :ingredients, allow_destroy: true
 
   validates :user,      presence:   true
-  validates :dish_name, presence:   { message: "Podaj nazwę dania" },
-                        uniqueness: { message: "Danie o takiej nazwie już istnieje" }
+  validates :dish_name, presence:   { message: (t 'activerecord.errors.dish.presence') },
+                        uniqueness: { message: (t 'activerecord.errors.dish.uniqueness') }
 
   def count_calories
     calories = 0

@@ -1,0 +1,4 @@
+pl:
+  shared:
+    error_messages:
+      general: "Błędnie wypełniony formularz"

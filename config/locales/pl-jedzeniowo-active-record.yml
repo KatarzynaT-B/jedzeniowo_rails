@@ -37,3 +37,7 @@ pl:
         name: "Nazwa użytkownika"
         email: "Adres e-mail"
         password: "Hasło"
+    errors:
+      dish:
+        present: "Podaj nazwę dania"
+        uniqueness: "Danie o takiej nazwie już istnieje"
