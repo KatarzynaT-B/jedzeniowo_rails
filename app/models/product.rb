@@ -5,15 +5,15 @@ class Product < ActiveRecord::Base
   has_many :ingredients, dependent: :destroy
   default_scope -> { order('product_name ASC') }
 
-  validates :user,            presence: true
-  validates :product_name,    presence:     { message: "Podaj nazwę produktu" },
-                              uniqueness:   { scope: :user_id, message: "Produkt o takiej nazwie już istnieje" }
-  validates :product_protein, presence:     { message: "Podaj ilość białka" },
-                              numericality: { message: "Ilość białka podana niepoprawnie" }
-  validates :product_fat,     presence:     { message: "Podaj ilość tłuszczu" },
-                              numericality: { message: "Ilość tłuszczu podana niepoprawnie" }
-  validates :product_carbs,   presence:     { message: "Podaj ilość węglowodanów" },
-                              numericality: { message: "Ilość węglowodanów podana niepoprawnie" }
+  validates :user,            presence:     true
+  validates :product_name,    presence:     true,
+                              uniqueness:   { scope: :user_id }
+  validates :product_protein, presence:     true,
+                              numericality: true
+  validates :product_fat,     presence:     true,
+                              numericality: true
+  validates :product_carbs,   presence:     true,
+                              numericality: true
   validate  :sum_of_values
 
   def protein_kcal
@@ -35,9 +35,9 @@ class Product < ActiveRecord::Base
   def sum_of_values
     sum = self.product_protein.to_f.round + self.product_fat.to_f.round + self.product_carbs.to_f.round
     if sum > 100
-      errors.add(:protein, "Podaj prawidłowe ilości białka, tłuszczu i węglowodanów")
-      errors.add(:carbs, "Podaj prawidłowe ilości białka, tłuszczu i węglowodanów")
-      errors.add(:fat, "Podaj prawidłowe ilości białka, tłuszczu i węglowodanów")
+      errors.add(:product_protein, (I18n.t('activerecord.errors.models.product.attributes.product_protein.sum_of_values')))
+      errors.add(:product_carbs, (I18n.t('activerecord.errors.models.product.attributes.product_fat.sum_of_values')))
+      errors.add(:product_fat, (I18n.t('activerecord.errors.models.product.attributes.product_carbs.sum_of_values')))
     end
   end
 end

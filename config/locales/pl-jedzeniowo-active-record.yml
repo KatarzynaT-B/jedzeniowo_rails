@@ -38,6 +38,47 @@ pl:
         email: "Adres e-mail"
         password: "Hasło"
     errors:
-      dish:
-        present: "Podaj nazwę dania"
-        uniqueness: "Danie o takiej nazwie już istnieje"
+      models:
+        dish:
+          attributes:
+            dish_name:
+              blank: "Podaj nazwę dania"
+              taken: "Danie o takiej nazwie już istnieje"
+        ingredient:
+          attributes:
+            quantity_per_dish:
+              blank: "Podaj ilość składnika potrzebną do przygotowania dania"
+              not_a_number: "Ilość składnika podana niepoprawnie"
+        meal_type:
+          attributes:
+            name:
+              blank: "Podaj nazwę typu posiłku"
+              taken: "Typ posiłku o takiej nazwie już istnieje"
+        product:
+          attributes:
+            product_name:
+              blank: "Podaj nazwę produktu"
+              taken: "Produkt o takiej nazwie już istnieje"
+            product_protein:
+              blank: "Podaj ilość białka"
+              not_a_number: "Ilość białka podana niepoprawnie"
+              sum_of_values: "Łączna ilość wszystkich składników nie może być większa niż 100g"
+            product_fat:
+              blank: "Podaj ilość tłuszczu"
+              not_a_number: "Ilość tłuszczu podana niepoprawnie"
+              sum_of_values: "Łączna ilość wszystkich składników nie może być większa niż 100g"
+            product_carbs:
+              blank: "Podaj ilość węglowodanów"
+              not_a_number: "Ilość węglowodanów podana niepoprawnie"
+              sum_of_values: "Łączna ilość wszystkich składników nie może być większa niż 100g"
+        user:
+          attributes:
+            name:
+              blank: "Podaj nazwę użytkownika"
+              too_long: "Nazwa użytkownika nie może być dłuższa niż 50 znaków"
+            email:
+              blank: "Podaj adres email"
+              taken: "Ten addres email już jest zajęty"
+              invalid: "Niewłaściwy format adresu"
+            password:
+              too_short: "Hasło musi mieć minimum 6 znaków"

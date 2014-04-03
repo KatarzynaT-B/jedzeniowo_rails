@@ -3,7 +3,7 @@ class MealType < ActiveRecord::Base
   belongs_to :user
 
   validates :user, presence:   true
-  validates :name, presence:   { message: "Podaj nazwę typu posiłku" },
-                   uniqueness: { scope: :user_id, message: "Typ posiłku o takiej nazwie już istnieje" }
+  validates :name, presence:   true,
+                   uniqueness: { scope: :user_id }
 
 end
