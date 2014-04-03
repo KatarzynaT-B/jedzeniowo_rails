@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140328115918) do
+ActiveRecord::Schema.define(version: 20140403135301) do
 
   create_table "dishes", force: true do |t|
     t.string   "dish_name"
@@ -62,7 +62,7 @@ ActiveRecord::Schema.define(version: 20140328115918) do
 
   create_table "menus", force: true do |t|
     t.date     "menu_date"
-    t.integer  "meals_no"
+    t.integer  "meals_count",   default: 0
     t.integer  "menu_calories"
     t.float    "menu_protein"
     t.float    "menu_fat"

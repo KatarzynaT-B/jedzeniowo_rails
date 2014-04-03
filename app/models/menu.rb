@@ -1,5 +1,5 @@
 class Menu < ActiveRecord::Base
-  before_save :count_meals, :count_calories, :count_carbs, :count_fat, :count_protein
+  before_save :count_calories, :count_carbs, :count_fat, :count_protein
 
   belongs_to :user
   has_many :dishes, through: :meals
@@ -10,9 +10,9 @@ class Menu < ActiveRecord::Base
 
   validates :user, presence: true
 
-  def count_meals
-    self.meals_no = self.meals.count
-  end
+  #def count_meals
+  #  self.meals_no = self.meals.count
+  #end
 
   # n+1 zapytań
   # Enumerable#inject LUB Enumerable#sum
