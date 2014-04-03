@@ -1,0 +1,12 @@
+pl:
+  sessions:
+    new:
+      subtitle: "Logowanie"
+      header:
+        main: "Zaloguj się"
+      button:
+        submit: "Zaloguj"
+      paragraph:
+        prompt: "Nie masz konta? "
+      link:
+        add: "Załóż je!"

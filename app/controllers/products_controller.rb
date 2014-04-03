@@ -17,7 +17,7 @@ class ProductsController < ApplicationController
     @product = @current_user.products.build(product_params)
     if @product.save
       redirect_to products_path
-      flash[:success] = "Produkt został dodany"
+      flash[:success] = t 'flash.shared.create.success', target: "produkt"
     else
       render action: 'new'
     end
@@ -29,7 +29,7 @@ class ProductsController < ApplicationController
   def update
     if @product.update(product_params)
       redirect_to products_path
-      flash[:success] = "Produkt został zmieniony"
+      flash[:success] = t 'flash.shared.update.success', target: "produkt"
     else
       render action: 'edit'
     end
@@ -37,7 +37,7 @@ class ProductsController < ApplicationController
 
   def destroy
     @product.destroy
-    flash[:success] = "Produkt usunięty"
+    flash[:success] = t 'flash.shared.destroy.success', target: "produkt"
     redirect_to products_url
   end
 

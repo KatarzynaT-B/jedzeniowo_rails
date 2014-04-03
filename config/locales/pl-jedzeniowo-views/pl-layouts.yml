@@ -1,0 +1,19 @@
+pl:
+  layouts:
+    header:
+      link:
+        jedzeniowo: "Jedzeniowo"
+        home: "Home"
+        about: "O nas"
+        login: "Zaloguj się"
+    signed_in_main:
+      link:
+        user: "Twoje dane"
+        profiles: "Twoje profile"
+        meal_types: "Typy posiłków"
+        logout: "Wyloguj się"
+    signed_in_menu:
+      link:
+        products: "Produkty"
+        dishes: "Dania"
+        menus: "Jadłospisy"

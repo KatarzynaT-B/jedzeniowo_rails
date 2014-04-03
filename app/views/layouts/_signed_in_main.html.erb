@@ -1,12 +1,12 @@
 <li id="fat-menu" class="dropdown">
   <a href="#" class="dropdown-toggle" data-toggle="dropdown"><%= current_user.name %><b class="caret"></b></a>
   <ul class="dropdown-menu">
-    <li><%= link_to "Twoje dane", current_user %></li>
-    <li><%= link_to "Twoje profile", '#' %></li>
-    <li><%= link_to "Typy posiłków", meal_types_path %></li>
+    <li><%= link_to (t '.link.user'), current_user %></li>
+    <li><%= link_to (t '.link.profiles'), '#' %></li>
+    <li><%= link_to (t '.link.meal_types'), meal_types_path %></li>
     <li class="divider"></li>
     <li>
-      <%= link_to "Wyloguj się", signout_path, method: "delete" %>
+      <%= link_to (t '.link.logout'), signout_path, method: "delete" %>
     </li>
   </ul>
 </li>

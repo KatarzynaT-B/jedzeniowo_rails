@@ -24,7 +24,7 @@ class DishesController < ApplicationController
     @dish = @current_user.dishes.build(dish_params)
     if @dish.save
       redirect_to @dish
-      flash[:success] = t 'flash.dishes.create.success'
+      flash[:success] = t 'flash.shared.create.success', target: "danie"
     else
       render action: 'new'
     end
@@ -33,7 +33,7 @@ class DishesController < ApplicationController
   def update
     if @dish.update(dish_params)
       redirect_to @dish
-      flash[:success] = t 'flash.dishes.update.success'
+      flash[:success] = t 'flash.shared.update.success', target: "danie"
     else
       render action: 'edit'
     end
@@ -41,7 +41,7 @@ class DishesController < ApplicationController
 
   def destroy
     @dish.destroy
-    flash[:success] = t 'flash.dishes.destroy.success'
+    flash[:success] = t 'flash.shared.destroy.success', target: "danie"
     redirect_to dishes_url
   end
 

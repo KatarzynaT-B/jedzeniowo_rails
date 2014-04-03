@@ -1,0 +1,20 @@
+pl:
+  pages:
+    about:
+      subtitle: "O nas"
+      header:
+        main: "O aplikacji"
+      paragraph:
+        list_intro: "Aplikacja pozwala na:"
+        description: "Stworzony profil informuje o dziennym zapotrzebowaniu na kalorie, białko, tłuszcze i węglowodany.
+                     Pomaga ocenić, w jakim stopniu ułożony przez nas jadłospis zaspokaja faktyczne potrzeby organizmu."
+        contact: "Tu będzie formularz kontaktowy, ale na razie go nie robię."
+      bullets:
+        first: "stworzenie bazy produktów wykorzystywanych w kuchni,"
+        second: "stworzenie bazy potraw,"
+        third: "tworzenie jadłospisów."
+    home:
+      header:
+        main: "Witaj"
+      link:
+        add: "Załóż konto!"

@@ -1,0 +1,26 @@
+pl:
+  meal_types:
+    new:
+      subtitle: "Nowy typ posiłku"
+      header:
+        main: "Dodaj typ posiłku"
+      button:
+        submit: "Zapisz"
+    edit:
+      subtitle: "Edycja typu posiłku"
+      header:
+        main: "Zmień typ posiłku"
+      button:
+        submit: "Zapisz zmiany"
+      link:
+        index: "Wróć do listy typów"
+    index:
+      subtitle: "Typy posiłków"
+      header:
+        main: "Twoje typy posiłków"
+      link:
+        add: "Dodaj nowy typ posiłku"
+    meal_type:
+      link:
+        edit: "zmień"
+        delete: "usuń"

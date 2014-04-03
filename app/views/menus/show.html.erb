@@ -1,13 +1,13 @@
-<% provide(:title, "Szczegóły jadłospisu") %>
+<% provide(:title, (t '.subtitle')) %>
 
 <div class="span6 offset2">
     <table class="table table-hover">
-        <caption>Jadłospis - wartości odżywcze</caption>
+        <caption><%= t '.table.menu.title' %></caption>
         <tr>
-            <th>Kalorie</th>
-            <th>Białko</th>
-            <th>Tłuszcze</th>
-            <th>Węglowodany</th>
+            <th><%= t '.table.menu.calories' %></th>
+            <th><%= t '.table.menu.protein' %></th>
+            <th><%= t '.table.menu.fat' %></th>
+            <th><%= t '.table.menu.carbs' %></th>
         </tr>
         <tr>
           <td><%= "#{@menu.menu_calories} kcal" %></td>
@@ -16,14 +16,14 @@
           <td><%= "#{4.0 * @menu.menu_carbs} kcal (#{@menu.menu_carbs} g)" %></td>
         </tr>
     </table>
-    <h3>Posiłki:</h3>
+    <h3><%= t '.header.meals' %></h3>
     <% @menu.meals.each do |meal| %>
         <table class="table table-hover">
             <caption><%= "#{meal.meal_type.name} - #{meal.dish.dish_name}" %></caption>
             <tr>
-                <th>Składniki</th>
-                <th>Ilość</th>
-                <th>Kalorie</th>
+                <th><%= t '.table.ingredients.title' %></th>
+                <th><%= t '.table.ingredients.amount' %></th>
+                <th><%= t '.table.ingredients.calories' %></th>
             </tr>
             <% meal.dish.ingredients.each do |ingredient| %>
             <tr>
@@ -34,16 +34,16 @@
             <% end %>
         </table>
 
-        <h5>Wykonanie:</h5>
+        <h5><%= t '.header.steps' %></h5>
         <p><%= meal.dish.dish_steps %></p>
 
         <table class="table table-hover">
-            <caption>Łącznie</caption>
+            <caption><%= t '.table.meals.title' %></caption>
             <tr>
-                <th>Kalorie</th>
-                <th>Białko</th>
-                <th>Tłuszcze</th>
-                <th>Węglowodany</th>
+                <th><%= t '.table.meals.calories' %></th>
+                <th><%= t '.table.meals.protein' %></th>
+                <th><%= t '.table.meals.fat' %></th>
+                <th><%= t '.table.meals.carbs' %></th>
             </tr>
             <tr>
                 <td><%= "#{meal.dish.dish_calories} kcal" %></td>
@@ -54,5 +54,5 @@
         </table>
     <% end %>
 
-    <%= link_to "zmień", edit_menu_path(@menu), class: "btn btn-primary" %>
+    <%= link_to (t '.link.edit'), edit_menu_path(@menu), class: "btn btn-primary" %>
 </div>

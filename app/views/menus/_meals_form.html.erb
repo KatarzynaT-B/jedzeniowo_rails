@@ -1,9 +1,9 @@
 <div class="meal-fields">
     <%= f.select :meal_type_id, @meal_types.each.collect { |meal_type| [meal_type.name, meal_type.id] },
-                 {include_blank: "wybierz rodzaj posiłku"},{ class: "form-control", id: "meal-field-type" } %>
+                 {include_blank: (t '.select.prompt.meal_type')},{ class: "form-control", id: "meal-field-type" } %>
 
     <%= f.select :dish_id, @dishes.each.collect { |dish| [dish.dish_name, dish.id] },
-                 {include_blank: "wybierz rodzaj posiłku"},{ class: "form-control", id: "meal-field-dish" } %>
+                 {include_blank: (t '.select.prompt.dish')},{ class: "form-control", id: "meal-field-dish" } %>
 
     <%= f.hidden_field :_destroy, { class: "form-control" } %>
     <%= f.link_to_remove "X", class: "btn btn-medium btn-danger" %>

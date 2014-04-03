@@ -9,7 +9,7 @@ class SessionsController < ApplicationController
       sign_in user
       redirect_back_or user
     else
-      flash.now[:error] = "Nieprawidłowe zestawienie adresu email i hasła"
+      flash.now[:error] = t 'flash.sessions.create.error'
       render 'new'
     end
   end

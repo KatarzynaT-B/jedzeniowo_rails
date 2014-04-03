@@ -1,13 +1,23 @@
 pl:
   # FLASH:
   flash:
-    dishes:
+    shared:
       create:
-        success: "Danie zostało dodane"
+        success: "Dodano %{target}"
       update:
-        success: "Danie zostało zmienione"
+        success: "Zmieniono %{target}"
       destroy:
-        success: "Danie zostało usunięte"
+        success: "Usunięto %{target}"
+    sessions:
+      create:
+        error: "Nieprawidłowe zestawienie adresu email i hasła"
+    users:
+      create:
+        success: "Witamy w Jedzeniowie!"
+      not_allowed:
+        notice: "Już jesteś użytkownikiem tej aplikacji"
+
+
 
   # MESSAGES:
   confirmation: "Na pewno chcesz usunąć %{target}?"

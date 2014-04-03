@@ -17,7 +17,7 @@ class MealTypesController < ApplicationController
     @meal_type = @current_user.meal_types.build(meal_type_params)
     if @meal_type.save
       redirect_to meal_types_path
-      flash[:success] = "Typ posiłku został dodany"
+      flash[:success] = t 'flash.shared.create.success', target: "typ posiłku"
     else
       render action: 'new'
     end
@@ -29,7 +29,7 @@ class MealTypesController < ApplicationController
   def update
     if @meal_type.update(meal_type_params)
       redirect_to meal_types_path
-      flash[:success] = "Typ posiłku został zmieniony"
+      flash[:success] = t 'flash.shared.update.success', target: "typ posiłku"
     else
       render action: 'edit'
     end
@@ -37,7 +37,7 @@ class MealTypesController < ApplicationController
 
   def destroy
     @meal_type.destroy
-    flash[:success] = "Typ posiłku usunięty"
+    flash[:success] = t 'flash.shared.destroy.success', target: "typ posiłku"
     redirect_to meal_types_path
   end
 

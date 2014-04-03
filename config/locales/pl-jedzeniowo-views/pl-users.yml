@@ -1,0 +1,31 @@
+pl:
+  users:
+    new:
+      subtitle: "Załóż konto"
+      header:
+        main: "Załóż konto!"
+      button:
+        submit: "Załóż konto"
+    edit:
+      subtitle: "Zmień dane"
+      header:
+        main: "Zmień swoje dane"
+      button:
+        submit: "Zapisz zmiany"
+    form:
+      confirm: "Potwierdź hasło"
+    index:
+      subtitle: "Użytkownicy"
+      header:
+        main: "Użytkownicy aplikacji"
+    user:
+      link:
+        delete: "usuń"
+    show:
+      header:
+        main: "Twoje dane"
+      table:
+        name: "Nazwa użytkownika"
+        email: "Adres email"
+      link:
+        edit: "zmień dane"

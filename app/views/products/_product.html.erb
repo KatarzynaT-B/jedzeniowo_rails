@@ -1,6 +1,6 @@
 <tr>
-  <td><%= link_to 'zmień', edit_product_path(product) %></td>
-  <td><%= link_to 'usuń', product, method: :delete, data: { confirm: "Na pewno chcesz usunąć produkt?" } %></td>
+  <td><%= link_to (t '.link.edit'), edit_product_path(product) %></td>
+  <td><%= link_to (t '.link.delete'), product, method: :delete, data: { confirm: (t 'confirmation', target: "produkt") } %></td>
   <th><%= product.product_name %></th>
   <td><%= "#{product.product_calories} kcal" %></td>
   <td><%= "#{product.product_protein} g (#{product.protein_kcal} kcal)" %></td>

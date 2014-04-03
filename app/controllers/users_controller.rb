@@ -13,7 +13,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       sign_in @user
-      flash[:success] = "Witamy w Jedzeniowie!"
+      flash[:success] = t 'flash.users.create.success'
       redirect_to @user
     else
       render 'new'
@@ -28,7 +28,7 @@ class UsersController < ApplicationController
 
   def update
     if @user.update_attributes(user_params)
-      flash[:success] = "Zmiany zostały zapisane"
+      flash[:success] = t 'flash.shared.update.success', target: "zmiany"
       redirect_to @user
     else
       render 'edit'
@@ -41,7 +41,7 @@ class UsersController < ApplicationController
 
   def destroy
     @user.destroy
-    flash[:success] = "Użytkownik usunięty"
+    flash[:success] = t 'flash.shared.destroy.success', target: "użytkownika"
     redirect_to users_url
   end
 
@@ -58,7 +58,7 @@ class UsersController < ApplicationController
     def not_allowed_for_user
       if signed_in?
         redirect_to(root_url)
-        flash[:notice] = "Już jesteś użytkownikiem tej aplikacji"
+        flash[:notice] = t 'flash.users.not_allowed.notice'
       end
     end
 

@@ -1,0 +1,35 @@
+pl:
+  products:
+    new:
+      subtitle: "Nowy produkt"
+      header:
+        main: "Dodaj produkt"
+      button:
+        submit: "Zapisz produkt"
+    edit:
+      subtitle: "Edycja produktu"
+      header:
+        main: "Zmień dane produktu"
+      button:
+        submit: "Zapisz zmiany"
+      link:
+        index: "Wróć do listy produktów"
+    form:
+      header:
+        description: "Zawartość w 100 g:"
+    product:
+      link:
+        edit: "zmień"
+        delete: "usuń"
+    index:
+      subtitle: "Produkty"
+      header:
+        main: "Twoje produkty"
+      table:
+        title: "Dla 100 g:"
+        calories: "Kalorie"
+        protein: "Białko"
+        fat: "Tłuszcze"
+        carbs: "Węglowodany"
+      link:
+        add: "Dodaj nowy produkt"

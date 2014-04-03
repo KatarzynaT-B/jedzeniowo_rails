@@ -1,0 +1,62 @@
+pl:
+  menus:
+    new:
+      subtitle: "Nowy jadłospis"
+      header:
+        main: "Dodaj jadłospis"
+      button:
+        submit: "Zapisz jadłospis"
+    edit:
+      subtitle: "Edycja jadłospisu"
+      header:
+        main: "Zmień jadłospis"
+      button:
+        submit: "Zapisz zmiany"
+    form:
+      link:
+        add: "Dodaj kolejny posiłek"
+      header:
+        meals: "Dodaj posiłek"
+    meals_form:
+      select:
+        prompt:
+          meal_type: "wybierz rodzaj posiłku"
+          dish: "wybierz posiłek"
+    menu:
+      link:
+        edit: "zmień"
+        delete: "usuń"
+        details: "szczegóły"
+    index:
+      subtitle: "Jadłospisy"
+      header:
+        main: "Twoje jadłospisy"
+      table:
+        meals: "Posiłki"
+        calories: "Kalorie"
+      link:
+        add: "Dodaj nowy jadłospis"
+    show:
+      subtitle: "Szczgóły jadłospisu"
+      header:
+        meals: "Posiłki"
+        steps: "Wykonanie"
+      table:
+        menu:
+          title: "Jadłospis - wartości odżywcze"
+          calories: "Kalorie"
+          protein: "Białko"
+          fat: "Tłuszcze"
+          carbs: "Węglowodany"
+        ingredients:
+          title: "Składnik"
+          amount: "Ilość"
+          calories: "Kalorie"
+        meals:
+          title: "Łącznie"
+          calories: "Kalorie"
+          protein: "Białko"
+          fat: "Tłuszcze"
+          carbs: "Węglowodany"
+      link:
+        edit: "zmień"
