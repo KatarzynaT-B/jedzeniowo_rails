@@ -19,17 +19,7 @@ pl:
 
   #DATE
   date:
-    weekdays:
-    -
-    - poniedziałek
-    - wtorek
-    - środa
-    - czwartek
-    - piątek
-    - sobota
-    - niedziela
-    formats:
-      custom: ! "%Y-%m-%d"
+    weekdays: ["poniedziałek", "wtorek", "środa", "czwartek", "piątek", "sobota", "niedziela"]
 
   # MESSAGES:
   confirmation: "Na pewno chcesz usunąć %{target}?"
