@@ -17,7 +17,19 @@ pl:
       not_allowed:
         notice: "Już jesteś użytkownikiem tej aplikacji"
 
-
+  #DATE
+  date:
+    weekdays:
+    -
+    - poniedziałek
+    - wtorek
+    - środa
+    - czwartek
+    - piątek
+    - sobota
+    - niedziela
+    formats:
+      custom: ! "%Y-%m-%d"
 
   # MESSAGES:
   confirmation: "Na pewno chcesz usunąć %{target}?"
