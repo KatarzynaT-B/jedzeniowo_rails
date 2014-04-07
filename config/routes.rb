@@ -14,6 +14,7 @@ Jedzeniowo::Application.routes.draw do
   resources :sessions, only: [:new, :create, :destroy]
   resources :dishes
   resources :menus
+  resources :profiles
   resources :meal_types, except: :show
 
   match "/about", to: 'pages#about', via: 'get'

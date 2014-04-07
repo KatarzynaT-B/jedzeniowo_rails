@@ -8,6 +8,7 @@ pl:
       menu: "Jadłospis"
       product: "Produkty"
       user: "Użytkownik"
+      profile: "Profil"
     attributes:
       dish:
         dish_name: "Nazwa dania"
@@ -37,8 +38,37 @@ pl:
         name: "Nazwa użytkownika"
         email: "Adres e-mail"
         password: "Hasło"
+      profile:
+        name: "Nazwa profilu"
+        gender: "Płeć"
+        age: "Wiek"
+        weight: "Waga"
+        height: "Wzrost"
+        activity_level: "Poziom aktywności"
+        calories_need: "Dzienne zapotrzebowanie energetyczne"
+        protein_need: "Dzienne zapotrzebowanie na białko"
+        fat_need: "Dzienne zapotrzebowanie na tłuszcze"
+        carbs_need: "Dzienne zapotrzebowanie na węglowodany"
     errors:
       models:
+        profile:
+          attributes:
+            name:
+              blank: "Podaj nazwę profilu"
+              taken: "Profil o takiej nazwie już istnieje"
+            age:
+              blank: "Podaj wiek dla profilu"
+              not_a_number: "Podaj wiek w formacie liczbowym"
+            gender:
+              blank: "Wybierz płeć dla profilu"
+            weight:
+              blank: "Podaj wagę dla profilu"
+              not_a_number: "Podaj prawidłową wartość wieku"
+            height:
+              blank: "Podaj wzrost dla profilu"
+              not_a_number: "Podaj prawidłową wartość wzrostu"
+            activity_level:
+              blank: "Wybierz poziom aktywności"
         dish:
           attributes:
             dish_name:
