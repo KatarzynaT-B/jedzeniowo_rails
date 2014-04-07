@@ -71,7 +71,6 @@ p {
   line-height: 1.7em;
 }
 
-
 /* header */
 
 #logo {
@@ -192,4 +191,30 @@ input {
 caption {
   font-size: 1.4em;
   text-align: left;
+}
+
+/* calendar */
+.calendar_month {
+  border-style: inset;
+  border-color: $grayLight;
+  font-size: 18px;
+  text-align: center;
+  td, th {
+    width: 130px;
+    border-style: inset;
+    border-color: $grayLight;
+  }
+  #month_row {
+    height: 50px;
+    font-size: 24px;
+  }
+  #week_row {
+    height: 40px;
+    font-size: 20px;
+    background-color: $grayLighter;
+  }
+  .calendar_meals {
+    font-size: 10px;
+    line-height: 13px;
+  }
 }

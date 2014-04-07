@@ -1,31 +1,28 @@
-
-<div class="span12">
-<table class="table table-bordered">
-  <thead>
+<table class="calendar_month">
+  <tr id="month_row">
+    <th colspan="7">
+      <%= link_to('<<<', year_month: (@date.prev_month)) %>
+      <%= l @date, format: '%B' %>
+      <%= link_to('>>>', year_month: (@date.next_month)) %>
+    </th>
+  </tr>
+  <tr>
+    <% (t 'date.weekdays').each do |day| %>
+        <th id="week_row"><%= day %></th>
+    <% end %>
+  </tr>
+  <% @calendar.all_days_for_month_view.each do |week| %>
       <tr>
-        <th>
-          <%= link_to('poprzedni', year_month: (@date.prev_month)) %>
-        </th>
-        <th><%= l @date, format: '%B' %></th>
-        <th>
-          <%= link_to('następny', year_month: (@date.next_month)) %>
-        </th>
-      </tr>
-      <tr>
-        <% (t 'date.weekdays').each do |day| %>
-            <th><%= day %></th>
+        <% week.each do |day| %>
+            <td colspan="1">
+              <%= link_to (l day, format: :short), calendar_day_path(day) %>
+              <div class="calendar_meals">
+                <% meals_for_day_in_month(day).each do |meal_info| %>
+                    <%= meal_info %><br>
+                <% end %>
+              </div>
+            </td>
         <% end %>
       </tr>
-  </thead>
-
-  <tbody>
-      <% @cal.all_days_for_month_view.each do |week| %>
-          <tr>
-              <% week.each do |day| %>
-                  <td><%= l day,format: :short %></td>
-              <% end %>
-          </tr>
-      <% end %>
-  </tbody>
+  <% end %>
 </table>
-</div>

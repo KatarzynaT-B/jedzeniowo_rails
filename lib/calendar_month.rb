@@ -10,7 +10,7 @@ class CalendarMonth
   #Depending on day of week for month beginning and end of the @date.month, method checks how many days of previous and next month should be displayed
   #so that the calendar's view was filled. If @date.month begins on day other than Monday, the first date displayed should be weekday_number of this
   #day minus 1, else - previous month is not included in view. If @date.month ends on day other than Sunday, the last date displayed should be
-  #7 minus weekday_number for this day, else - next month is not included in view.
+  #7 minus weekday_number fo
   def all_days_for_month_view
     first_of_month = @date.beginning_of_month
     last_of_month = @date.end_of_month

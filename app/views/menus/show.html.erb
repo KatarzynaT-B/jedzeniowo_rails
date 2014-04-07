@@ -11,9 +11,9 @@
         </tr>
         <tr>
           <td><%= "#{@menu.menu_calories} kcal" %></td>
-          <td><%= "#{4.0 * @menu.menu_protein} kcal (#{@menu.menu_protein} g)" %></td>
-          <td><%= "#{9.0 * @menu.menu_fat} kcal (#{@menu.menu_fat} g)" %></td>
-          <td><%= "#{4.0 * @menu.menu_carbs} kcal (#{@menu.menu_carbs} g)" %></td>
+          <td><%= "#{(4.0 * @menu.menu_protein).round(2)} kcal (#{@menu.menu_protein} g)" %></td>
+          <td><%= "#{(9.0 * @menu.menu_fat).round(2)} kcal (#{@menu.menu_fat} g)" %></td>
+          <td><%= "#{(4.0 * @menu.menu_carbs).round(2)} kcal (#{@menu.menu_carbs} g)" %></td>
         </tr>
     </table>
     <h3><%= t '.header.meals' %></h3>
