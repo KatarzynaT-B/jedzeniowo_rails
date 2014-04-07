@@ -16,15 +16,6 @@ class CalendarMonth
     days_to_display = (display_begin..display_end).inject([]) { |days_list, day| days_list << day }
 
     days_to_display.each_slice(7).to_a
-
-    #view_month = []
-    #first_day = @date.beginning_of_month
-    #(weekday_number(first_day) - 1).downto(1) { |i| view_month << first_day.ago(i.days).to_date } if weekday_number(first_day) > 1
-    #month_length = Time.days_in_month(@date.month, @date.year)
-    #0.upto(month_length - 1) { |i|  view_month << first_day.advance(days: i) }
-    #last_day = @date.end_of_month
-    #1.upto(7 - weekday_number(last_day)) { |i| view_month << last_day.advance(days: i) } if weekday_number(last_day) < 7
-    #view_month.flatten.each_slice(7).to_a
   end
 
   protected
