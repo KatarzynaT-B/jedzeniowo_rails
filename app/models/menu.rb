@@ -10,33 +10,19 @@ class Menu < ActiveRecord::Base
 
   validates :user, presence: true
 
-  #def count_meals
-  #  self.meals_no = self.meals.count
-  #end
-
-  # n+1 zapytań
-  # Enumerable#inject LUB Enumerable#sum
   def count_calories
-    calories = 0
-    self.meals.each { |meal| calories += meal.dish.dish_calories }
-    self.menu_calories = calories.round
+    self.menu_calories = (meals.includes(:dish).inject(0) { |calories, meal| calories + meal.dish.dish_calories }).round
   end
 
   def count_protein
-    protein = 0
-    self.meals.each { |meal| protein += meal.dish.dish_protein }
-    self.menu_protein = protein.round(2)
+    self.menu_protein = (meals.includes(:dish).inject(0) { |protein, meal| protein + meal.dish.dish_protein }).round(2)
   end
 
   def count_fat
-    fat = 0
-    self.meals.each { |meal| fat += meal.dish.dish_fat }
-    self.menu_fat = fat.round(2)
+    self.menu_fat = (meals.includes(:dish).inject(0) { |fat, meal| fat + meal.dish.dish_fat }).round(2)
   end
 
   def count_carbs
-    carbs = 0
-    self.meals.each { |meal| carbs += meal.dish.dish_carbs }
-    self.menu_carbs = carbs.round(2)
+    self.menu_carbs = (meals.includes(:dish).inject(0) { |carbs, meal| carbs + meal.dish.dish_carbs }).round(2)
   end
 end

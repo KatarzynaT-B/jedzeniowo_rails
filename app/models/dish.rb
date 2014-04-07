@@ -12,26 +12,18 @@ class Dish < ActiveRecord::Base
                         uniqueness: true
 
   def count_calories
-    calories = 0
-    self.ingredients.each { |i| calories += i.count_calories }
-    self.dish_calories = calories.round
+    self.dish_calories = (ingredients.inject(0) { |kcal, ingredient| kcal + ingredient.count_calories }).round
   end
 
   def count_protein
-    protein = 0
-    self.ingredients.each { |i| protein += i.count_protein }
-    self.dish_protein = protein.round(2)
+    self.dish_protein = (ingredients.inject(0) { |protein, ingredient| protein + ingredient.count_protein }).round(2)
   end
 
   def count_fat
-    fat = 0
-    self.ingredients.each { |i| fat += i.count_fat }
-    self.dish_fat = fat.round(2)
+    self.dish_fat = (ingredients.inject(0) { |fat, ingredient| fat + ingredient.count_fat }).round(2)
   end
 
   def count_carbs
-    carbs = 0
-    self.ingredients.each { |i| carbs += i.count_carbs }
-    self.dish_carbs = carbs.round(2)
+    self.dish_carbs = (ingredients.inject(0) { |carbs, ingredient| carbs + ingredient.count_carbs }).round(2)
   end
 end
