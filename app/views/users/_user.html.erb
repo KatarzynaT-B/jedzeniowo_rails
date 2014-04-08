@@ -1,6 +1,6 @@
 <li>
   <%= link_to user.name, user %>
   <% if current_user.admin? && !current_user?(user) %>
-    | <%= link_to (t '.link.delete'), user, method: :delete, data: { confirm: t 'confirmation', target: "użytkownika" } %>
+    | <%= link_to (t '.link.delete'), user, method: :delete, data: { confirm: (t 'confirmation', target: "użytkownika") } %>
   <% end %>
 </li>

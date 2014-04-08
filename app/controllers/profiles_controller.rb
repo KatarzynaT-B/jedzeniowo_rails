@@ -16,7 +16,7 @@ class ProfilesController < ApplicationController
     @profile = @current_user.profiles.build(profile_params)
     if @profile.save
       redirect_to @profile
-      flash[:success] = t 'flash.shared.create.success', target: "profil"
+      flash[:success] = (t 'flash.shared.create.success', target: "profil")
     else
       render action: 'new'
     end
@@ -28,7 +28,7 @@ class ProfilesController < ApplicationController
   def update
     if @profile.update(profile_params)
       redirect_to @profile
-      flash[:success] = t 'flash.shared.update.success', target: "profil"
+      flash[:success] = (t 'flash.shared.update.success', target: "profil")
     end
   end
 
@@ -37,7 +37,7 @@ class ProfilesController < ApplicationController
 
   def destroy
     @profile.destroy
-    flash[:success] = t 'flash.shared.destroy.success', target: "profil"
+    flash[:success] = (t 'flash.shared.destroy.success', target: "profil")
     redirect_to profiles_url
   end
 

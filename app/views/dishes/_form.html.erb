@@ -7,7 +7,7 @@
     </div>
 </div>
 
-<h4><%= t '.header.ingredients' %></h4>
+<h4><%= (t '.header.ingredients') %></h4>
 
 <%= f.fields_for :ingredients, html: { class: "form-inline" } do |ingredient_builder| %>
   <%= render "ingredients_form", f: ingredient_builder %>
@@ -15,5 +15,5 @@
 
 <%= f.link_to_add (t '.link.add'), :ingredients, class: "btn btn-medium btn-primary"  %>
 
-<h4><%= t '.header.steps' %></h4>
+<h4><%= (t '.header.steps') %></h4>
 <%= f.text_area :dish_steps %>

@@ -1,14 +1,14 @@
 <% provide(:title, @user.name) %>
 <div class="hero-unit">
-<h3><%= t '.header.main' %></h3>
+<h3><%= (t '.header.main') %></h3>
 
   <table class="table table-hover">
     <tr>
-      <th><%= t '.table.name' %></th>
+      <th><%= (t '.table.name') %></th>
       <td><%= @user.name %></td>
     </tr>
     <tr>
-      <th><%= t '.table.email' %></th>
+      <th><%= (t '.table.email') %></th>
       <td><%= @user.email %></td>
     </tr>
   </table>

@@ -23,7 +23,7 @@ class MenusController < ApplicationController
     @menu = @current_user.menus.create(menu_params)
     if @menu.save
       redirect_to @menu
-      flash[:success] = t 'flash.shared.create.success', target: "jadłospis"
+      flash[:success] = (t 'flash.shared.create.success', target: "jadłospis")
     else
       render action: 'new'
     end
@@ -35,7 +35,7 @@ class MenusController < ApplicationController
   def update
     if @menu.update(menu_params)
       redirect_to @menu
-      flash[:success] = t 'flash.shared.update.success', target: "jadłospis"
+      flash[:success] = (t 'flash.shared.update.success', target: "jadłospis")
     else
       render action: 'edit'
     end
@@ -43,7 +43,7 @@ class MenusController < ApplicationController
 
   def destroy
     @menu.destroy
-    flash[:success] = t 'flash.shared.destroy.success', target: "jadłospis"
+    flash[:success] = (t 'flash.shared.destroy.success', target: "jadłospis")
     redirect_to menus_url
   end
 

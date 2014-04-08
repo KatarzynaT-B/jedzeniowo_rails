@@ -2,12 +2,12 @@
 <div class="span12">
   <h3><%= @dish.dish_name.titleize %></h3>
     <table class="table table-hover">
-        <caption><%= t '.table.meal.title' %></caption>
+        <caption><%= (t '.table.meal.title') %></caption>
         <tr>
-            <th><%= t '.table.meal.calories' %></th>
-            <th><%= t '.table.meal.protein' %></th>
-            <th><%= t '.table.meal.fat' %></th>
-            <th><%= t '.table.meal.carbs' %></th>
+            <th><%= (t '.table.meal.calories') %></th>
+            <th><%= (t '.table.meal.protein') %></th>
+            <th><%= (t '.table.meal.fat') %></th>
+            <th><%= (t '.table.meal.carbs') %></th>
         </tr>
         <tr>
             <td><%= "#{@dish.dish_calories} kcal" %></td>
@@ -17,14 +17,14 @@
         </tr>
     </table>
     <table class="table table-hover">
-        <caption><%= t '.table.ingredients.title' %></caption>
+        <caption><%= (t '.table.ingredients.title') %></caption>
         <tr>
-            <th><%= t '.table.ingredients.name' %></th>
-            <th><%= t '.table.ingredients.amount' %></th>
-            <th><%= t '.table.ingredients.calories' %></th>
-            <th><%= t '.table.ingredients.protein' %></th>
-            <th><%= t '.table.ingredients.fat' %></th>
-            <th><%= t '.table.ingredients.carbs' %></th>
+            <th><%= (t '.table.ingredients.name') %></th>
+            <th><%= (t '.table.ingredients.amount') %></th>
+            <th><%= (t '.table.ingredients.calories') %></th>
+            <th><%= (t '.table.ingredients.protein') %></th>
+            <th><%= (t '.table.ingredients.fat') %></th>
+            <th><%= (t '.table.ingredients.carbs') %></th>
         </tr>
         <% @dish.ingredients.each do |ingredient| %>
             <tr>
@@ -39,7 +39,7 @@
     </table>
 
     <table class="table table-hover">
-      <caption><%= t '.table.steps.title' %></caption>
+      <caption><%= (t '.table.steps.title') %></caption>
       <tr><td><%= @dish.dish_steps %></td></tr>
     </table>
 

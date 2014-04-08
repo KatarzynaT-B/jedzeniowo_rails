@@ -2,12 +2,12 @@
 
 <div class="span6 offset2">
     <table class="table table-hover">
-        <caption><%= t '.table.menu.title' %></caption>
+        <caption><%= (t '.table.menu.title') %></caption>
         <tr>
-            <th><%= t '.table.menu.calories' %></th>
-            <th><%= t '.table.menu.protein' %></th>
-            <th><%= t '.table.menu.fat' %></th>
-            <th><%= t '.table.menu.carbs' %></th>
+            <th><%= (t '.table.menu.calories') %></th>
+            <th><%= (t '.table.menu.protein') %></th>
+            <th><%= (t '.table.menu.fat') %></th>
+            <th><%= (t '.table.menu.carbs') %></th>
         </tr>
         <tr>
           <td><%= "#{@menu.menu_calories} kcal" %></td>
@@ -16,14 +16,14 @@
           <td><%= "#{grams_to_kcal(carbs: @menu.menu_carbs)} kcal (#{@menu.menu_carbs} g)" %></td>
         </tr>
     </table>
-    <h3><%= t '.header.meals' %></h3>
+    <h3><%= (t '.header.meals') %></h3>
     <% @menu.meals.each do |meal| %>
         <table class="table table-hover">
             <caption><%= "#{meal.meal_type.name} - #{meal.dish.dish_name}" %></caption>
             <tr>
-                <th><%= t '.table.ingredients.title' %></th>
-                <th><%= t '.table.ingredients.amount' %></th>
-                <th><%= t '.table.ingredients.calories' %></th>
+                <th><%= (t '.table.ingredients.title') %></th>
+                <th><%= (t '.table.ingredients.amount') %></th>
+                <th><%= (t '.table.ingredients.calories') %></th>
             </tr>
             <% meal.dish.ingredients.each do |ingredient| %>
             <tr>
@@ -34,16 +34,16 @@
             <% end %>
         </table>
 
-        <h5><%= t '.header.steps' %></h5>
+        <h5><%= (t '.header.steps') %></h5>
         <p><%= meal.dish.dish_steps %></p>
 
         <table class="table table-hover">
-            <caption><%= t '.table.meals.title' %></caption>
+            <caption><%= (t '.table.meals.title') %></caption>
             <tr>
-                <th><%= t '.table.meals.calories' %></th>
-                <th><%= t '.table.meals.protein' %></th>
-                <th><%= t '.table.meals.fat' %></th>
-                <th><%= t '.table.meals.carbs' %></th>
+                <th><%= (t '.table.meals.calories') %></th>
+                <th><%= (t '.table.meals.protein') %></th>
+                <th><%= (t '.table.meals.fat') %></th>
+                <th><%= (t '.table.meals.carbs') %></th>
             </tr>
             <tr>
                 <td><%= "#{meal.dish.dish_calories} kcal" %></td>

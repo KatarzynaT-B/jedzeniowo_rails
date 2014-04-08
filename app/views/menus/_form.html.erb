@@ -7,7 +7,7 @@
     </div>
 </div>
 
-<h4><%= t '.header.meals' %></h4>
+<h4><%= (t '.header.meals') %></h4>
 
 <%= f.fields_for :meals, html: { class: "form-inline" } do |meal_builder| %>
   <%= render 'meals_form', f: meal_builder %>
