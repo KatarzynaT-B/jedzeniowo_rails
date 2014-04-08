@@ -1,7 +1,7 @@
 <% provide(:title, @dish.dish_name.titleize) %>
-<div class="span12">
+<div>
   <h3><%= @dish.dish_name.titleize %></h3>
-    <table class="table table-hover">
+    <table>
         <caption><%= (t '.table.meal.title') %></caption>
         <tr>
             <th><%= (t '.table.meal.calories') %></th>
@@ -16,7 +16,7 @@
             <td><%= "#{grams_to_kcal(carbs: @dish.dish_carbs)} kcal (#{@dish.dish_carbs} g)" %></td>
         </tr>
     </table>
-    <table class="table table-hover">
+    <table>
         <caption><%= (t '.table.ingredients.title') %></caption>
         <tr>
             <th><%= (t '.table.ingredients.name') %></th>
@@ -38,11 +38,11 @@
         <% end %>
     </table>
 
-    <table class="table table-hover">
+    <table>
       <caption><%= (t '.table.steps.title') %></caption>
       <tr><td><%= @dish.dish_steps %></td></tr>
     </table>
 
 
-    <%= link_to (t '.link.edit'), edit_dish_path(@dish), class: "btn btn-large btn-primary pull-right" %>
+    <%= link_to (t '.link.edit'), edit_dish_path(@dish) %>
 </div>

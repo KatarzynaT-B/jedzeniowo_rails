@@ -1,8 +1,7 @@
 <% provide(:title, (t '.subtitle')) %>
-<h3 class="text-left"><%= (t '.header.main') %></h3>
+<h3><%= (t '.header.main') %></h3>
 
-<div class="span6">
-  <table class="table table-hover">
+  <table>
     <thead>
     <tr>
       <th></th>
@@ -17,5 +16,4 @@
     </tbody>
   </table>
   <%= will_paginate %>
-  <%= link_to (t '.link.add'), new_menu_path, class: "btn btn-primary pull-right" %>
-</div>
+  <%= link_to (t '.link.add'), new_menu_path %>

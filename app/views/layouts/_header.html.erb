@@ -1,9 +1,6 @@
-<div class="navbar navbar-fixed-top">
-  <div class="navbar-inner">
-    <div class="container">
-      <%= link_to (t '.link.jedzeniowo'), root_path, id: "logo" %>
+      <%= link_to (t '.link.jedzeniowo'), root_path %>
       <nav>
-        <ul class="nav navbar-nav pull-right">
+        <ul>
           <li><%= link_to (t '.link.home'), root_path %></li>
           <li><%= link_to (t '.link.about'), about_path %></li>
           <% if signed_in? %>
@@ -16,6 +13,3 @@
             <%= render 'layouts/signed_in_menu' %>
         <% end %>
       </nav>
-    </div>
-  </div>
-</div>

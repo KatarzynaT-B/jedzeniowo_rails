@@ -1,19 +1,17 @@
 <%= render 'shared/error_messages', object: @dish %>
 
-<div class="form-group name">
-    <%= f.label :dish_name, class: "col-md-3 control-label" %>
-    <div class="col-md-3">
-        <%= f.text_field :dish_name %>
-    </div>
-</div>
+
+<%= f.label :dish_name, class: "col-md-3 control-label" %>
+<%= f.text_field :dish_name %>
+
 
 <h4><%= (t '.header.ingredients') %></h4>
 
-<%= f.fields_for :ingredients, html: { class: "form-inline" } do |ingredient_builder| %>
+<%= f.fields_for :ingredients do |ingredient_builder| %>
   <%= render "ingredients_form", f: ingredient_builder %>
 <% end %>
 
-<%= f.link_to_add (t '.link.add'), :ingredients, class: "btn btn-medium btn-primary"  %>
+<%= f.link_to_add (t '.link.add'), :ingredients  %>
 
 <h4><%= (t '.header.steps') %></h4>
 <%= f.text_area :dish_steps %>

@@ -1,6 +1,6 @@
-<table class="calendar_month">
-  <tr id="month_row">
-    <th colspan="7">
+<table>
+  <tr>
+    <th>
       <%= link_to('<<<', year_month: (@date.prev_month)) %>
       <%= l @date, format: '%B' %>
       <%= link_to('>>>', year_month: (@date.next_month)) %>
@@ -8,15 +8,15 @@
   </tr>
   <tr>
     <% (t 'date.weekdays').each do |day| %>
-        <th id="week_row"><%= day %></th>
+        <th><%= day %></th>
     <% end %>
   </tr>
   <% @calendar.all_days_for_month_view.each do |week| %>
       <tr>
         <% week.each do |day| %>
-            <td colspan="1">
+            <td>
               <%= link_to (l day, format: :short), calendar_day_path(day) %>
-              <div class="calendar_meals">
+              <div>
                 <% meals_for_day_in_month(day).each do |meal_info| %>
                     <%= meal_info %><br>
                 <% end %>

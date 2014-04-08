@@ -1,31 +1,15 @@
 <%= render 'shared/error_messages', object: @product %>
 
-<div class="form-group name">
-    <%= f.label :product_name, class: "col-md-3 control-label" %>
-    <div class="col-md-3">
+<div>
+    <%= f.label :product_name %>
         <%= f.text_field :product_name %>
-    </div>
 </div>
 
 <h4><%= (t '.header.description') %></h4>
 
-<div class="amount_fields ">
-    <div class="form-group amount">
-        <%= f.label :product_protein, class: "col-md-6 control-label"  %>
-        <div class="col-md-3 ">
+        <%= f.label :product_protein  %>
             <%= f.text_field :product_protein %>
-        </div>
-    </div>
-    <div class="form-group amount">
-        <%= f.label :product_fat, class: "col-md-6 control-label"  %>
-        <div class="col-md-3 ">
+        <%= f.label :product_fat  %>
             <%= f.text_field :product_fat %>
-        </div>
-    </div>
-    <div class="form-group amount">
-        <%= f.label :product_carbs, class: "col-md-6 control-label"  %>
-        <div class="col-md-3 ">
+        <%= f.label :product_carbs  %>
             <%= f.text_field :product_carbs %>
-        </div>
-    </div>
-</div>

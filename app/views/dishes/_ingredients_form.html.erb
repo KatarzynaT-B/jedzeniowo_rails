@@ -1,7 +1,7 @@
-<div class="ingredients-fields">
+<div>
     <%= f.select :product_id, @products.each.collect { |product| [product.product_name, product.id] },
-                 {include_blank: (t '.select.prompt')},{ class: "form-control" } %>
-    <%= f.number_field :quantity_per_dish, class: "form-control", placeholder: (t '.placeholder.quantity') %>
-    <%= f.hidden_field :_destroy, class: "form-control" %>
-    <%= f.link_to_remove "X", class: "btn btn-medium btn-danger"  %>
+                 {include_blank: (t '.select.prompt')} %>
+    <%= f.number_field :quantity_per_dish, placeholder: (t '.placeholder.quantity') %>
+    <%= f.hidden_field :_destroy %>
+    <%= f.link_to_remove "X" %>
 </div>

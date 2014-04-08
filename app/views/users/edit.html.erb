@@ -1,10 +1,6 @@
 <% provide(:title, (t '.subtitle')) %>
 <h1><%= (t '.header.main') %></h1>
-<div class="row">
-  <div class="span6 offset3">
     <%= form_for(@user) do |f| %>
       <%= render 'form', f: f %>
-      <%= f.submit (t '.button.submit'), class: "btn btn-primary" %>
+      <%= f.submit (t '.button.submit') %>
     <% end %>
-  </div>
-</div>

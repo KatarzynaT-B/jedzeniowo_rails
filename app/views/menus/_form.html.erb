@@ -1,16 +1,12 @@
 <%= render 'shared/error_messages', object: @menu %>
 
-<div class="form-group date">
-    <%= f.label :menu_date, class: "col-md-2 control-label" %>
-    <div class="col-md-2">
+    <%= f.label :menu_date %>
         <%= f.date_field :menu_date %>
-    </div>
-</div>
 
 <h4><%= (t '.header.meals') %></h4>
 
-<%= f.fields_for :meals, html: { class: "form-inline" } do |meal_builder| %>
+<%= f.fields_for :meals do |meal_builder| %>
   <%= render 'meals_form', f: meal_builder %>
 <% end %>
 
-<%= f.link_to_add (t '.link.add'), :meals, class: "btn btn-medium btn-primary" %>
+<%= f.link_to_add (t '.link.add'), :meals %>
