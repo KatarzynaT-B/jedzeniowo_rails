@@ -9,7 +9,7 @@ class ProfilesController < ApplicationController
   end
 
   def new
-    @profile = @current_user.profiles.build
+    @profile = @current_user.profiles.new
   end
 
   def create

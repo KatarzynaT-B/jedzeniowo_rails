@@ -11,9 +11,9 @@
         </tr>
         <tr>
             <td><%= "#{@dish.dish_calories} kcal" %></td>
-            <td><%= "#{(4.0 * @dish.dish_protein).round(2)} kcal (#{@dish.dish_protein} g)" %></td>
-            <td><%= "#{(9.0 * @dish.dish_fat).round(2)} kcal (#{@dish.dish_fat} g)" %></td>
-            <td><%= "#{(4.0 * @dish.dish_carbs).round(2)} kcal (#{@dish.dish_carbs} g)" %></td>
+            <td><%= "#{grams_to_kcal(protein: @dish.dish_protein)} kcal (#{@dish.dish_protein} g)" %></td>
+            <td><%= "#{grams_to_kcal(fat: @dish.dish_fat)} kcal (#{@dish.dish_fat} g)" %></td>
+            <td><%= "#{grams_to_kcal(carbs: @dish.dish_carbs)} kcal (#{@dish.dish_carbs} g)" %></td>
         </tr>
     </table>
     <table class="table table-hover">

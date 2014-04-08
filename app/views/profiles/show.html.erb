@@ -1,58 +1,71 @@
-<% provide(:title, @profile.nam.titleize) %>
+<% provide(:title, @profile.name.titleize) %>
 
 <div class="span6 offset2">
   <table class="table table-hover">
-    <caption><%= t '.table.menu.title' %></caption>
+    <caption><%= @profile.name.capitalize %></caption>
+
     <tr>
-      <th><%= t '.table.menu.calories' %></th>
-      <th><%= t '.table.menu.protein' %></th>
-      <th><%= t '.table.menu.fat' %></th>
-      <th><%= t '.table.menu.carbs' %></th>
+      <th><%= t '.table.gender' %></th>
+      <td><%= profile_gender_as_string(@profile) %></td>
     </tr>
+
     <tr>
-      <td><%= "#{@menu.menu_calories} kcal" %></td>
-      <td><%= "#{(4.0 * @menu.menu_protein).round(2)} kcal (#{@menu.menu_protein} g)" %></td>
-      <td><%= "#{(9.0 * @menu.menu_fat).round(2)} kcal (#{@menu.menu_fat} g)" %></td>
-      <td><%= "#{(4.0 * @menu.menu_carbs).round(2)} kcal (#{@menu.menu_carbs} g)" %></td>
+      <th><%= t '.table.age' %></th>
+      <td><%= t '.table.measurement_units.age', target: @profile.age %></td>
+    </tr>
+
+    <tr>
+      <th><%= t '.table.weight' %></th>
+      <td><%= t '.table.measurement_units.weight', target: @profile.weight %></td>
+    </tr>
+
+    <tr>
+      <th><%= t '.table.height' %></th>
+      <td><%= t '.table.measurement_units.height', target: @profile.height %></td>
+    </tr>
+
+    <tr>
+      <th><%= t '.table.activity_level' %></th>
+      <td><%= @profile.activity_level %></td>
+    </tr>
+
+    <tr>
+      <th><%= t '.table.calories_need' %></th>
+      <td>
+        <%= t '.table.measurement_units.needs.calories',
+              target: @profile.calories_need %>
+      </td>
+    </tr>
+
+    <tr>
+      <th><%= t '.table.protein_need' %></th>
+      <td>
+        <%= t '.table.measurement_units.needs.grams_calories',
+              target_g: @profile.protein_need,
+              target_kcal: grams_to_kcal(protein: @profile.protein_need) %>
+      </td>
+    </tr>
+
+    <tr>
+      <th><%= t '.table.fat_need' %></th>
+      <td>
+        <%= t '.table.measurement_units.needs.grams_calories',
+              target_g: @profile.fat_need,
+              target_kcal: grams_to_kcal(fat: @profile.fat_need) %>
+      </td>
+    </tr>
+
+    <tr>
+      <th><%= t '.table.carbs_need' %></th>
+      <td>
+        <%= t '.table.measurement_units.needs.grams_calories',
+                target_g: @profile.carbs_need,
+                target_kcal: grams_to_kcal(carbs: @profile.carbs_need)  %>
+      </td>
     </tr>
   </table>
-  <h3><%= t '.header.meals' %></h3>
-  <% @menu.meals.each do |meal| %>
-      <table class="table table-hover">
-        <caption><%= "#{meal.meal_type.name} - #{meal.dish.dish_name}" %></caption>
-        <tr>
-          <th><%= t '.table.ingredients.title' %></th>
-          <th><%= t '.table.ingredients.amount' %></th>
-          <th><%= t '.table.ingredients.calories' %></th>
-        </tr>
-        <% meal.dish.ingredients.each do |ingredient| %>
-            <tr>
-              <td><%= ingredient.product.product_name %></td>
-              <td><%= "#{ingredient.quantity_per_dish} g" %></td>
-              <td><%= "#{ingredient.count_calories} kcal" %></td>
-            </tr>
-        <% end %>
-      </table>
 
-      <h5><%= t '.header.steps' %></h5>
-      <p><%= meal.dish.dish_steps %></p>
-
-      <table class="table table-hover">
-        <caption><%= t '.table.meals.title' %></caption>
-        <tr>
-          <th><%= t '.table.meals.calories' %></th>
-          <th><%= t '.table.meals.protein' %></th>
-          <th><%= t '.table.meals.fat' %></th>
-          <th><%= t '.table.meals.carbs' %></th>
-        </tr>
-        <tr>
-          <td><%= "#{meal.dish.dish_calories} kcal" %></td>
-          <td><%= "#{meal.dish.dish_protein} g" %></td>
-          <td><%= "#{meal.dish.dish_fat} g" %></td>
-          <td><%= "#{meal.dish.dish_carbs} g" %></td>
-        </tr>
-      </table>
-  <% end %>
-
-  <%= link_to (t '.link.edit'), edit_menu_path(@menu), class: "btn btn-primary" %>
+  <%= link_to (t '.link.edit'), edit_profile_path(@profile), class: "btn btn-primary" %>
 </div>
+
+<%= render 'activity_levels' %>

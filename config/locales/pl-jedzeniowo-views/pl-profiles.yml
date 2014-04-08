@@ -17,8 +17,7 @@ pl:
         activity_level: "Wybierz poziom aktywności"
         steps: "Wykonanie"
       activity_labels:
-        level_1: "brak aktywności - całkowicie ograniczona aktywność fizyczna
-                  (niepełnosprawność ruchowa, paraliż, przewlekła hospitalizacja)"
+        level_1: "brak aktywności - całkowicie ograniczona aktywność fizyczna (niepełnosprawność ruchowa, paraliż, przewlekła hospitalizacja)"
         level_2: "bardzo niska aktywność - praca siedząca, brak dodatkowej aktywności"
         level_3: "niska aktywność - praca siedząca, ograniczona aktywność dodatkowa"
         level_4: "umiarkowana aktywność - praca siedząca, umiarkowana aktywność po pracy"
@@ -28,6 +27,9 @@ pl:
       link:
         edit: "zmień"
         delete: "usuń"
+      needs:
+        calories: "%{target} kcal"
+        grams: "%{target} g"
     index:
       subtitle: "Profile"
       header:
@@ -40,10 +42,10 @@ pl:
         weight: "Waga"
         height: "Wzrost"
         activity_level: "Poziom aktywności"
-        calories_need: "Kalorie"
-        protein_need: "Białko"
-        fat_need: "Tłuszcze"
-        carbs_need: "Węglowodany"
+        calories_need: "Kalorie / dz."
+        protein_need: "Białko / dz."
+        fat_need: "Tłuszcze / dz."
+        carbs_need: "Węglowodany / dz."
       link:
         add: "Dodaj nowe danie"
     activity_levels:
@@ -56,30 +58,30 @@ pl:
         term_5: "5 - duża aktywność"
         term_6: "6 - bardzo duża aktywność"
       descriptions:
-        description_1: "całkowicie ograniczona aktywność fizyczna (paraliż,
-                        niepełnosprawność ruchowa, przewlekła hospitalizacja)"
+        description_1: "całkowicie ograniczona aktywność fizyczna (paraliż, niepełnosprawność ruchowa, przewlekła hospitalizacja)"
         description_2: "praca siedząca, brak dodatkowej aktywności po pracy"
         description_3: "praca siedząca, ograniczona aktywność po pracy"
         description_4: "praca siedząca, umiarkowana aktywność po pracy"
         description_5: "praca siedząca, duża aktywność po pracy"
         description_6: "ciężka praca fizyczna, sport wyczynowy"
-#    show:
-#      table:
-#        meal:
-#          title: "Wartość posiłku:"
-#          calories: "Kalorie"
-#          protein: "Białko"
-#          fat: "Tłuszcze"
-#          carbs: "Węglowodany"
-#        ingredients:
-#          title: "Składniki"
-#          name: "Składnik"
-#          amount: "Ilość"
-#          calories: "Kalorie"
-#          protein: "Białko"
-#          fat: "Tłuszcze"
-#          carbs: "Węglowodany"
-#        steps:
-#          title: "Wykonanie"
-#      link:
-#        edit: "zmień"
+    show:
+      table:
+        gender: "Płeć"
+        age: "Wiek"
+        weight: "Waga"
+        height: "Wzrost"
+        activity_level: "Poziom aktywności"
+        calories_need: "Dzienne zapotrzebowanie kaloryczne"
+        protein_need: "Białko - dzienne zapotrzebowanie"
+        fat_need: "Tłuszcze - dzienne zapotrzebowanie"
+        carbs_need: "Węglowodany - dzienne zapotrzebowanie"
+        measurement_units:
+          age: "%{target} lat"
+          weight: "%{target} kg"
+          height: "%{target} cm"
+          needs:
+            calories: "%{target} kcal"
+            grams: "%{target} g"
+            grams_calories: "%{target_g} g (%{target_kcal} kcal)"
+      link:
+        edit: "zmień"
