@@ -1,0 +1,58 @@
+<% provide(:title, @profile.nam.titleize) %>
+
+<div class="span6 offset2">
+  <table class="table table-hover">
+    <caption><%= t '.table.menu.title' %></caption>
+    <tr>
+      <th><%= t '.table.menu.calories' %></th>
+      <th><%= t '.table.menu.protein' %></th>
+      <th><%= t '.table.menu.fat' %></th>
+      <th><%= t '.table.menu.carbs' %></th>
+    </tr>
+    <tr>
+      <td><%= "#{@menu.menu_calories} kcal" %></td>
+      <td><%= "#{(4.0 * @menu.menu_protein).round(2)} kcal (#{@menu.menu_protein} g)" %></td>
+      <td><%= "#{(9.0 * @menu.menu_fat).round(2)} kcal (#{@menu.menu_fat} g)" %></td>
+      <td><%= "#{(4.0 * @menu.menu_carbs).round(2)} kcal (#{@menu.menu_carbs} g)" %></td>
+    </tr>
+  </table>
+  <h3><%= t '.header.meals' %></h3>
+  <% @menu.meals.each do |meal| %>
+      <table class="table table-hover">
+        <caption><%= "#{meal.meal_type.name} - #{meal.dish.dish_name}" %></caption>
+        <tr>
+          <th><%= t '.table.ingredients.title' %></th>
+          <th><%= t '.table.ingredients.amount' %></th>
+          <th><%= t '.table.ingredients.calories' %></th>
+        </tr>
+        <% meal.dish.ingredients.each do |ingredient| %>
+            <tr>
+              <td><%= ingredient.product.product_name %></td>
+              <td><%= "#{ingredient.quantity_per_dish} g" %></td>
+              <td><%= "#{ingredient.count_calories} kcal" %></td>
+            </tr>
+        <% end %>
+      </table>
+
+      <h5><%= t '.header.steps' %></h5>
+      <p><%= meal.dish.dish_steps %></p>
+
+      <table class="table table-hover">
+        <caption><%= t '.table.meals.title' %></caption>
+        <tr>
+          <th><%= t '.table.meals.calories' %></th>
+          <th><%= t '.table.meals.protein' %></th>
+          <th><%= t '.table.meals.fat' %></th>
+          <th><%= t '.table.meals.carbs' %></th>
+        </tr>
+        <tr>
+          <td><%= "#{meal.dish.dish_calories} kcal" %></td>
+          <td><%= "#{meal.dish.dish_protein} g" %></td>
+          <td><%= "#{meal.dish.dish_fat} g" %></td>
+          <td><%= "#{meal.dish.dish_carbs} g" %></td>
+        </tr>
+      </table>
+  <% end %>
+
+  <%= link_to (t '.link.edit'), edit_menu_path(@menu), class: "btn btn-primary" %>
+</div>

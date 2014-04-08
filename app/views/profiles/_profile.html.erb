@@ -1,0 +1,14 @@
+<tr>
+  <td><%= link_to (t '.link.edit'), edit_profile_path(profile) %></td>
+  <td><%= link_to (t '.link.delete'), profile, method: :delete, data: { confirm: t 'confirmation', target: "profile" } %></td>
+  <td><%= link_to profile.name, profile %></td>
+  <td><%= profile_gender_as_string(profile) %></td>
+  <td><%= profile.age %></td>
+  <td><%= profile.weight %></td>
+  <td><%= profile.height %></td>
+  <td><%= profile.activity_level %></td>
+  <td><%= profile.calories_need %></td>
+  <td><%= profile.protein_need %></td>
+  <td><%= profile.fat_need %></td>
+  <td><%= profile.carbs_need %></td>
+</tr>

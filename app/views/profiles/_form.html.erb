@@ -1,0 +1,37 @@
+<%= render 'shared/error_messages', object: @profile %>
+
+<%= f.label :name %>
+<%= f.text_field :name %>
+
+<%= f.label :gender %>
+<%= f.radio_button :gender, '1' %>Kobieta
+<%= f.radio_button :gender, '2' %>Mężczyzna
+
+<%= f.label :age %>
+<%= f.select :age, 18..75 %>
+
+<%= f.label :weight %>
+<%= f.number_field :weight %>
+
+<%= f.label :height %>
+<%= f.number_field :height %>
+
+<h4><%= t '.header.activity_level' %></h4>
+
+<%= f.label :activity_level, t '.activity_labels.level_1' %>
+<%= f.radio_button :activity_level, 1 %>
+
+<%= f.label :activity_level, t '.activity_labels.level_2' %>
+<%= f.radio_button :activity_level, 2 %>
+
+<%= f.label :activity_level, t '.activity_labels.level_3' %>
+<%= f.radio_button :activity_level, 3 %>
+
+<%= f.label :activity_level, t '.activity_labels.level_4' %>
+<%= f.radio_button :activity_level, 4 %>
+
+<%= f.label :activity_level, t '.activity_labels.level_5' %>
+<%= f.radio_button :activity_level, 5 %>
+
+<%= f.label :activity_level, t '.activity_labels.level_6' %>
+<%= f.radio_button :activity_level, 6 %>

@@ -1,9 +1,10 @@
 class ProfilesController < ApplicationController
   before_action :signed_in_user
   before_action :set_profile, only: [:edit, :update, :show, :destroy]
+  include ProfilesHelper
 
   def index
-    @profiles = @current_user.profiles
+    @profiles = @current_user.profiles.paginate(page: params[:page], per_page: 5)
     redirect_to new_profile_path if @profiles.empty?
   end
 

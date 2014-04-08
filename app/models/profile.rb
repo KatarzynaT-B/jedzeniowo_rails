@@ -13,6 +13,8 @@ class Profile < ActiveRecord::Base
                               numericality: true
   validates :activity_level,  presence: true
 
+  def count_activity_factor
 
+  end
 
 end

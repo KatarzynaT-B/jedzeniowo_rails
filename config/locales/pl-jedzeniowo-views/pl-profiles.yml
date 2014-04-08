@@ -1,0 +1,85 @@
+pl:
+  profiles:
+    new:
+      subtitle: "Nowy profil"
+      header:
+        main: "Dodaj profil"
+      button:
+        submit: "Zapisz profil"
+    edit:
+      subtitle: "Zmień profil"
+      header:
+        main: "Zmień profil"
+      button:
+        submit: "Zapisz zmiany"
+    form:
+      header:
+        activity_level: "Wybierz poziom aktywności"
+        steps: "Wykonanie"
+      activity_labels:
+        level_1: "brak aktywności - całkowicie ograniczona aktywność fizyczna
+                  (niepełnosprawność ruchowa, paraliż, przewlekła hospitalizacja)"
+        level_2: "bardzo niska aktywność - praca siedząca, brak dodatkowej aktywności"
+        level_3: "niska aktywność - praca siedząca, ograniczona aktywność dodatkowa"
+        level_4: "umiarkowana aktywność - praca siedząca, umiarkowana aktywność po pracy"
+        level_5: "duża aktywność - praca siedząca, duża aktywność po pracy"
+        level_6: "bardzo duża aktywność - ciężka praca fizyczna, sport wyczynowy"
+    profile:
+      link:
+        edit: "zmień"
+        delete: "usuń"
+    index:
+      subtitle: "Profile"
+      header:
+        main: "Twoje profile"
+      table:
+        label: "Dzienne zapotrzebowanie"
+        name: "Nazwa"
+        age: "Wiek"
+        gender: "Płeć"
+        weight: "Waga"
+        height: "Wzrost"
+        activity_level: "Poziom aktywności"
+        calories_need: "Kalorie"
+        protein_need: "Białko"
+        fat_need: "Tłuszcze"
+        carbs_need: "Węglowodany"
+      link:
+        add: "Dodaj nowe danie"
+    activity_levels:
+      header: "Poziomy aktywności"
+      terms:
+        term_1: "1 - brak aktywności"
+        term_2: "2 - bardzo niska aktywność"
+        term_3: "3 - niska aktywność"
+        term_4: "4 - umiarkowana aktywność"
+        term_5: "5 - duża aktywność"
+        term_6: "6 - bardzo duża aktywność"
+      descriptions:
+        description_1: "całkowicie ograniczona aktywność fizyczna (paraliż,
+                        niepełnosprawność ruchowa, przewlekła hospitalizacja)"
+        description_2: "praca siedząca, brak dodatkowej aktywności po pracy"
+        description_3: "praca siedząca, ograniczona aktywność po pracy"
+        description_4: "praca siedząca, umiarkowana aktywność po pracy"
+        description_5: "praca siedząca, duża aktywność po pracy"
+        description_6: "ciężka praca fizyczna, sport wyczynowy"
+#    show:
+#      table:
+#        meal:
+#          title: "Wartość posiłku:"
+#          calories: "Kalorie"
+#          protein: "Białko"
+#          fat: "Tłuszcze"
+#          carbs: "Węglowodany"
+#        ingredients:
+#          title: "Składniki"
+#          name: "Składnik"
+#          amount: "Ilość"
+#          calories: "Kalorie"
+#          protein: "Białko"
+#          fat: "Tłuszcze"
+#          carbs: "Węglowodany"
+#        steps:
+#          title: "Wykonanie"
+#      link:
+#        edit: "zmień"

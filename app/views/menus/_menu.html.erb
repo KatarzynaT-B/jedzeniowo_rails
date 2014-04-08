@@ -1,6 +1,6 @@
 <tr>
   <td><%= link_to (t '.link.edit'), edit_menu_path(menu) %></td>
-  <td><%= link_to (t '.link.delete'), menu, method: :delete, data: { confirm: "Na pewno chcesz usunąć jadłospis?" } %></td>
+  <td><%= link_to (t '.link.delete'), menu, method: :delete, data: { confirm: t 'confirmation', target: "jadłospis" } %></td>
   <td><%= link_to menu.menu_date || (t '.link.details'), menu %></td>
   <td><%= menu.meals_count %></td>
   <td><%= "#{menu.menu_calories} kcal" %></td>
