@@ -3,9 +3,13 @@ pl:
     header:
       link:
         jedzeniowo: "Jedzeniowo"
-        home: "Home"
         about: "O nas"
-        login: "Zaloguj się"
+    login:
+      placeholders:
+        email: "Email"
+        password: "Hasło"
+      button:
+        submit: "Zaloguj"
     signed_in_main:
       link:
         user: "Twoje dane"

@@ -10,13 +10,12 @@
 // Read Sprockets README (https://github.com/sstephenson/sprockets#sprockets-directives) for details
 // about supported directives.
 //
+//= require bootstrap
 //= require jquery
 //= require jquery_nested_form
 //= require jquery_ujs
-//= require bootstrap
 //= require turbolinks
 //= require_tree .
-
 
     if ($('.remove_nested_fields').not(':hidden').length == 1) {
         $('.remove_nested_fields').hide();

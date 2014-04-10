@@ -1,23 +1,41 @@
 <!DOCTYPE html>
-<html>
-<head>
-  <title><%= full_title(yield(:title)) %></title>
-  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
-  <%= javascript_include_tag "application", cache: true, "data-turbolinks-track" => false %>
-  <%= csrf_meta_tags %>
-  <!--[if lt IE 9]>
+<html xmlns="http://www.w3.org/1999/html">
+  <head>
+    <title><%= full_title(yield(:title)) %></title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <%= stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => true %>
+
+    <%= csrf_meta_tags %>
+    <!--[if lt IE 9]>
     <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-  <![endif]-->
-</head>
-<body>
-  <header>
-    <%= render 'layouts/header' %>
-  </header>
-  <div>
-    <% flash.each do |key,value| %>
-      <%= content_tag(:div, value, class: "alert alert-#{key}") %>
-    <% end %>
-    <%= yield %>
-  </div>
-</body>
+    <![endif]-->
+  </head>
+  <body>
+    <header>
+      <%= render 'layouts/header' %>
+    </header>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-3">
+          <% if signed_in? %>
+              <%= render 'layouts/signed_in_menu' %>
+          <% end %>
+        </div>
+        <div class="col-md-8">
+          <main>
+            <aside>
+              <% flash.each do |key, value| %>
+                  <%= content_tag(:div, value, class: "alert alert-#{key}") %>
+              <% end %>
+            </aside>
+            <%= yield %>
+          </main>
+        </div>
+      </div>
+    </div>
+  <%= javascript_include_tag "application", cache: true, "data-turbolinks-track" => false %>
+  <script src="http://code.jquery.com/jquery-latest.js"></script>
+  </body>
 </html>

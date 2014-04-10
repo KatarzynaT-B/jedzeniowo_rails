@@ -8,6 +8,8 @@ pl:
         success: "Zmieniono %{target}"
       destroy:
         success: "Usunięto %{target}"
+      index:
+        notice: "Nie masz jeszcze %{target}"
     sessions:
       create:
         error: "Nieprawidłowe zestawienie adresu email i hasła"

@@ -1,0 +1,5 @@
+<h3><%= (t '.header.main') %></h3>
+<%= nested_form_for @menu do |f| %>
+    <%= render 'form', f: f %>
+    <%= f.submit (t '.button.submit') %>
+<% end %>

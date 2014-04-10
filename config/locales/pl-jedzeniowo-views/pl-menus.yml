@@ -2,6 +2,7 @@ pl:
   menus:
     new:
       subtitle: "Nowy jadłospis"
+    new_menu:
       header:
         main: "Dodaj jadłospis"
       button:
@@ -34,8 +35,6 @@ pl:
       table:
         meals: "Posiłki"
         calories: "Kalorie"
-      link:
-        add: "Dodaj nowy jadłospis"
     show:
       subtitle: "Szczgóły jadłospisu"
       header:

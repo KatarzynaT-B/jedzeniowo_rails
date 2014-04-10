@@ -1,7 +1,6 @@
 pl:
   products:
     new:
-      subtitle: "Nowy produkt"
       header:
         main: "Dodaj produkt"
       button:
@@ -31,5 +30,4 @@ pl:
         protein: "Białko"
         fat: "Tłuszcze"
         carbs: "Węglowodany"
-      link:
-        add: "Dodaj nowy produkt"
+

@@ -1,6 +1,7 @@
 <% provide(:title, @user.name) %>
-<h3><%= (t '.header.main') %></h3>
+<div class="page-header"><h1><%= (t '.header.main') %></h1></div>
 
+<div class="jumbotron">
   <table>
     <tr>
       <th><%= (t '.table.name') %></th>
@@ -12,4 +13,6 @@
     </tr>
   </table>
   <%= link_to (t '.link.edit'), edit_user_path(@user) %>
+</div>
+
 

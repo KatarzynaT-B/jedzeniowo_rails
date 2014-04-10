@@ -1,6 +1,6 @@
-<ul>
-  <li><%= link_to (t '.link.products'), products_path %></li>
-  <li><%= link_to (t '.link.dishes'), dishes_path %></li>
-  <li><%= link_to (t '.link.menus'), menus_path %></li>
-  <li><%= link_to (t '.link.calendar'), calendar_month_path %></li>
+<ul class="nav nav-pills nav-stacked">
+  <li><%= link_to (t '.link.products'), products_path, class: "btn btn-default btn-lg btn-block" %></li>
+  <li><%= link_to (t '.link.dishes'), dishes_path, class: "btn btn-default btn-lg btn-block" %></li>
+  <li><%= link_to (t '.link.menus'), menus_path, class: "btn btn-default btn-lg btn-block" %></li>
+  <li><%= link_to (t '.link.calendar'), calendar_month_path, class: "btn btn-default btn-lg btn-block" %></li>
 </ul>

@@ -1,15 +1,24 @@
-      <%= link_to (t '.link.jedzeniowo'), root_path %>
-      <nav>
-        <ul>
-          <li><%= link_to (t '.link.home'), root_path %></li>
-          <li><%= link_to (t '.link.about'), about_path %></li>
-          <% if signed_in? %>
-              <%= render 'layouts/signed_in_main' %>
-          <% else %>
-              <li><%= link_to (t '.link.login'), signin_path %></li>
-          <% end %>
-        </ul>
+<nav class="navbar navbar-fixed-top navbar-inverse" role="navigation">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <%= link_to (t '.link.jedzeniowo'), root_path, class: 'navbar-brand' %>
+    </div>
+    <div class="collapse navbar-collapse" id="navbar-collapse">
+      <ul class="nav navbar-nav pull-right">
+        <li><%= link_to (t '.link.about'), about_path %></li>
         <% if signed_in? %>
-            <%= render 'layouts/signed_in_menu' %>
+          <%= render 'layouts/signed_in_main' %>
+        <% else %>
+          <%= render 'login' %>
         <% end %>
-      </nav>
+      </ul>
+    </div>
+  </div>
+</nav>
+

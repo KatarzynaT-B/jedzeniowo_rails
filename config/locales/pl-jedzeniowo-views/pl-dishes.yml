@@ -1,7 +1,6 @@
 pl:
   dishes:
     new:
-      subtitle: "Nowe danie"
       header:
         main: "Dodaj przepis"
       button:
@@ -36,8 +35,6 @@ pl:
         protein: "Białko"
         fat: "Tłuszcze"
         carbs: "Węglowodany"
-      link:
-        add: "Dodaj nowe danie"
     show:
       table:
         meal:

@@ -4,23 +4,16 @@ class ProductsController < ApplicationController
 
   def index
     @products = @current_user.products.paginate(page: params[:page], per_page: 5)
-    if @products.empty?
-      redirect_to new_product_path
-    end
-  end
-
-  def new
     @product = @current_user.products.build
+    if @products.empty?
+      flash[:notice] = (t 'flash.shared.index.notice', target: "produktów")
+    end
   end
 
   def create
     @product = @current_user.products.build(product_params)
-    if @product.save
-      redirect_to products_path
-      flash[:success] = (t 'flash.shared.create.success', target: "produkt")
-    else
-      render action: 'new'
-    end
+    redirect_to products_path
+    flash[:success] = (t 'flash.shared.create.success', target: "produkt") if @product.save
   end
 
   def edit

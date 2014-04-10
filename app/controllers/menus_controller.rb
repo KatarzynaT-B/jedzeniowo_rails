@@ -8,6 +8,8 @@ class MenusController < ApplicationController
 
   def index
     @menus = @current_user.menus.paginate(page: params[:page], per_page: 5)
+    @menu = @current_user.menus.build
+    @menu.meals.build
     redirect_to new_menu_path if @menus.empty?
   end
 

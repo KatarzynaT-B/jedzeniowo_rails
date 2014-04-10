@@ -6,15 +6,17 @@ class DishesController < ApplicationController
 
   def index
     @dishes = @current_user.dishes.paginate(page: params[:page], per_page: 5)
-    redirect_to new_dish_path if @dishes.empty?
+    @dish = @current_user.dishes.build
+    @dish.ingredients.build
+    if @dishes.empty?
+      flash[:notice] = (t 'flash.shared.index.notice', target: "stworzonych dań")
+    end
   end
 
   def show
   end
 
   def new
-    @dish = @current_user.dishes.build
-    @dish.ingredients.build
   end
 
   def edit
@@ -22,12 +24,8 @@ class DishesController < ApplicationController
 
   def create
     @dish = @current_user.dishes.build(dish_params)
-    if @dish.save
-      redirect_to @dish
-      flash[:success] = (t 'flash.shared.create.success', target: "danie")
-    else
-      render action: 'new'
-    end
+    redirect_to dishes_path
+    flash[:success] = (t 'flash.shared.create.success', target: "danie") if @dish.save
   end
 
   def update
