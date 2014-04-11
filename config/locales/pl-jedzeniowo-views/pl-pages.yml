@@ -4,17 +4,18 @@ pl:
       subtitle: "O nas"
       header:
         main: "O aplikacji"
+    description:
       paragraph:
-        list_intro: "Aplikacja pozwala na:"
+        list_intro: "W Jedzeniowie możesz:"
         description: "Stworzony profil informuje o dziennym zapotrzebowaniu na kalorie, białko, tłuszcze i węglowodany.
                      Pomaga ocenić, w jakim stopniu ułożony przez nas jadłospis zaspokaja faktyczne potrzeby organizmu."
-        contact: "Tu będzie formularz kontaktowy, ale na razie go nie robię."
       bullets:
-        first: "stworzenie bazy produktów wykorzystywanych w kuchni,"
-        second: "stworzenie bazy potraw,"
-        third: "tworzenie jadłospisów."
+        first: "stworzyć bazę produktów wykorzystywanych w kuchni,"
+        second: "stworzyć bazę potraw,"
+        third: "budować jadłospisy,"
+        fourth: "układać menu na poszczególne dni."
     home:
       header:
-        main: "Witaj"
+        main: "Witaj!"
       link:
         add: "Załóż konto!"

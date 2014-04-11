@@ -1,5 +1,7 @@
-<div>
-  <h1><%= (t '.header.main') %></h1>
-  <%= link_to (t '.link.add'), signup_path %>
+<div class="page-header"><h1><%= (t '.header.main') %></h1></div>
+<div class="jumbotron">
+  <%= render 'description' %>
+  <div class="sign-up"><%= link_to (t '.link.add'), signup_path, class: "btn btn-success btn-lrg" %></div>
 </div>
+
 

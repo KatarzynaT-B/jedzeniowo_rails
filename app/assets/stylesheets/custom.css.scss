@@ -1,9 +1,108 @@
-body { padding-top: 60px; }
+/* general layout */
 
-.navbar-brand {font-size: 46px;}
-.navbar-fixed-top {font-size: 28px;}
-.btn-block {
-  font-size: 32px;
-  margin-bottom: 8px;
+body { padding-top: 100px; }
+
+.sidebar {
+  padding-top: 10px;
+  @media screen and (min-width: 768px) {
+    margin-top: 100px;
+    position: fixed;
+    top: 100px;
+    left: 10px;
+    width: 190px;
+  }
+  @media screen and (min-width: 1024px) {
+    left: 30px;
+    width: 220px;
+  }
+  @media screen and (min-width: 1356px) {
+    margin-top: 100px;
+    position: fixed;
+    top: 100px;
+    left: 110px;
+    width: 230px;
+  }
 }
-.nav-stacked {padding-top: 120px;}
+.color { background-color: #EEEEEE; }
+
+.page-header { margin-top: 20px; }
+
+.jumbotron {
+  min-height: 308px;
+}
+/* end of general layout */
+
+/* navigation (views: layouts) */
+
+.navbar { min-height: 70px; }
+
+.navbar-inverse {
+  font-size: 28px;
+  @media screen and (max-width: 992px) {
+    font-size: 24px;
+  }
+}
+
+.navbar-brand {
+  font-size: 40px;
+  margin-top: 10px;
+}
+
+.navbar-toggle {
+  margin-top: 18px;
+  &.icon-bar {
+  width: 30px;
+  height: 4px;
+  }
+}
+
+.side-menu-button {
+  font-size: 32px;
+  margin-bottom: 10px;
+}
+
+.side-menu {
+  margin: auto;
+  @media screen and (min-width: 768px) {
+    width: 170px;
+    min-height: 308px;
+  }
+  @media screen and (min-width: 1024px) {
+    width: 200px;
+  }
+  @media screen and (min-width: 1356px) {
+    width: 210px;
+    min-height: 308px;
+  }
+}
+
+.dropdown-menu {
+  font-size: 16px;
+}
+
+.login {
+  display: inline-block;
+  width: 180px;
+  font-size: 14px;
+  @media screen and (max-width: 992px) {
+    width: 140px;
+  }
+}
+
+.navigation { margin-top: 16px; }
+/* end of navigation */
+
+/* main content (everything that goes in yield section) */
+
+.description-list {
+  list-style: none;
+  font-size: 16px;
+}
+
+.sign-up {
+  width: 200px;
+  margin: 0 auto;
+  a {
+    font-size: 30px;
+  }
+}

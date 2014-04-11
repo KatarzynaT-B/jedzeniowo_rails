@@ -18,18 +18,20 @@
     </header>
     <div class="container-fluid">
       <div class="row">
-        <div class="col-md-3">
-          <% if signed_in? %>
-              <%= render 'layouts/signed_in_menu' %>
-          <% end %>
+        <div class="col-sm-2 col-sm-offset-1">
+          <div class="sidebar color">
+            <% if signed_in? %>
+                <%= render 'layouts/signed_in_menu' %>
+            <% else %>
+                <%= render 'layouts/contact_form' %>
+            <% end %>
+          </div>
         </div>
-        <div class="col-md-8">
+        <div class="col-sm-7">
           <main>
-            <aside>
-              <% flash.each do |key, value| %>
-                  <%= content_tag(:div, value, class: "alert alert-#{key}") %>
-              <% end %>
-            </aside>
+            <% flash.each do |key, value| %>
+              <%= content_tag(:div, value, class: "alert alert-#{key}") %>
+            <% end %>
             <%= yield %>
           </main>
         </div>

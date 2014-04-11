@@ -22,3 +22,5 @@ pl:
         dishes: "Dania"
         menus: "Jadłospisy"
         calendar: "Kalendarz"
+    contact_form:
+      contact: "Tu będzie formularz kontaktowy, ale na razie go nie robię."
