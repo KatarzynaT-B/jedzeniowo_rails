@@ -25,7 +25,7 @@ pl:
       header:
         main: "Twoje dane"
       table:
-        name: "Nazwa użytkownika"
-        email: "Adres email"
+        name: "Użytkownik"
+        email: "E-mail"
       link:
         edit: "zmień dane"

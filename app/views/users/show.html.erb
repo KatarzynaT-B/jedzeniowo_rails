@@ -1,20 +1,13 @@
 <% provide(:title, @user.name) %>
 <div class="page-header"><h1><%= (t '.header.main') %></h1></div>
 
-<div class="jumbotron">
-  <div class="table-responsive">
-    <table class="table table-hover">
-      <tr>
-        <th><%= (t '.table.name') %></th>
-        <td><%= @user.name %></td>
-      </tr>
-      <tr>
-        <th><%= (t '.table.email') %></th>
-        <td><%= @user.email %></td>
-      </tr>
-    </table>
+<div class="jumbotron col-md-10 adjust">
+  <div class="col-md-9 ">
+    <h3><span class="label label-default"><%= (t '.table.name') %></span><%= "  #{@user.name}" %></h3>
+    <h3><span class="label label-default"><%= (t '.table.email') %></span><%= "  #{@user.email}" %></h3>
+    <%= link_to (t '.link.edit'), edit_user_path(@user), class: "btn btn-lg btn-warning" %>
   </div>
-  <%= link_to (t '.link.edit'), edit_user_path(@user) %>
 </div>
+
 
 

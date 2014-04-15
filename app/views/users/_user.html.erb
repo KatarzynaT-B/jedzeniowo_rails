@@ -1,6 +1,11 @@
-<li>
-  <%= link_to user.name, user %>
-  <% if current_user.admin? && !current_user?(user) %>
-    | <%= link_to (t '.link.delete'), user, method: :delete, data: { confirm: (t 'confirmation', target: "użytkownika") } %>
-  <% end %>
-</li>
+<div class="panel panel-default">
+  <div class="panel-body">
+    <div class="action">
+      <% if current_user.admin? && !current_user?(user) %>
+        <%= link_to (t '.link.delete'), user, method: :delete, class: "btn btn-md btn-danger", data: { confirm: (t 'confirmation', target: "użytkownika") } %>
+      <% end %>
+    </div>
+    <div><%= link_to user.name, user, class: "btn btn-default btn-md btn-block" %></div>
+    <div><span class="label label-default"><%= user.email %></span></div>
+  </div>
+</div>

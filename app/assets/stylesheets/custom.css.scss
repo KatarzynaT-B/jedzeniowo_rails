@@ -29,6 +29,10 @@ body { padding-top: 100px; }
 
 .jumbotron {
   min-height: 308px;
+  @media screen and (max-width: 600px) {
+    padding-left: 5px;
+    padding-top: 5px;
+  }
 }
 /* end of general layout */
 
@@ -106,3 +110,66 @@ body { padding-top: 100px; }
     font-size: 30px;
   }
 }
+
+.adjust {
+  h3 span {
+    display: inline-block;
+  }
+  .btn {
+    margin-top: 15px;
+  }
+  @media screen and (max-width: 600px) {
+    width: 400px;
+    h3 {
+      font-size: 14px;
+    }
+  }
+}
+
+.panel.panel-default > div.panel-body {
+  padding: 10px;
+}
+
+%inside-panel {
+  margin: 1px;
+  padding-top: 1px;
+  padding-bottom: 1px;
+  height: 26px;
+}
+
+.panel-body div {
+  display: inline-block;
+  width: 200px;
+  padding-right: 10px;
+  line-height: 110%;
+  vertical-align: middle;
+  &.action {
+    width: 70px;
+    .btn.btn-danger {
+      @extend %inside-panel;
+    }
+  }
+  & > a.btn.btn-default.btn-block {
+    @extend %inside-panel;
+  }
+  & > span.label.label-default {
+    @extend %inside-panel;
+    display: inline-block;
+    line-height: 26px;
+    // & >  {
+    //   @extend %inside-panel;
+    // }
+  }
+}
+
+
+// div.panel-body > div {
+//   display: inline-block;
+//   width: 200px;
+//   & > a {
+//     width: 50px;
+//     .btn.btn-default {
+//     width: 150px;
+//     }
+//   }
+// }

@@ -1,8 +1,8 @@
 <% provide(:title, (t '.subtitle')) %>
-<h1><%= (t '.header.main') %></h1>
+<div class="page-header"><h1><%= (t '.header.main') %></h1></div>
 
-<%= will_paginate %>
-<ul>
-  <%= render @users %>
-</ul>
-<%= will_paginate %>
+<div class="jumbotron col-md-10 adjust">
+    <%= will_paginate %>
+      <%= render @users %>
+    <%= will_paginate %>
+</div>
